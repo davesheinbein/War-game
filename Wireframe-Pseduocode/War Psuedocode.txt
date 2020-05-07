@@ -1,0 +1,48 @@
+﻿Load 2 decks (52 cards = 1 deck) 104 cards total
+Create/Find images for 2 decks to shuffle card
+
+
+Start the game
+Define variables to start game
+
+
+Prompt users to play (two players -1, 1. No tie game require)
+
+
+Create a while loop with an endloop conditional statement that stop doesn’t equal to zero
+
+
+Create if statement
+
+
+Create else if statement
+Deck 1
+
+
+Create else if statement
+Deck 2
+
+
+Create else if statement
+Deck 1 == Deck 1
+
+
+End
+
+
+Go to next card
+
+
+Create show deck length for player 1 and player 2
+Print display how many cards each player 1 and player 2 has
+
+
+Use if else statement to show if player 1 has all 104 cards print “player 1 wins” else if player 2 has all 104 cards print “player 2 wins”
+
+
+If player 1 or player 2 has 0 cards then the loop ends 
+Print player 1 or player 2 wins when loop reaches zero
+
+
+Bonus
+Reset game by adding button to call initialize(); function
