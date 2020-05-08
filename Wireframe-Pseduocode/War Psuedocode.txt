@@ -1,9 +1,9 @@
-﻿Load 2 decks (52 cards = 1 deck) 104 cards total
+Load 2 decks (52 cards = 1 deck) 104 cards total
 Create/Find images for 2 decks to shuffle card
 
 
 Start the game
-Define variables to start game
+Define constants to start game
 
 
 Prompt users to play (two players -1, 1. No tie game require)
@@ -13,24 +13,32 @@ Create a while loop with an endloop conditional statement that stop doesn’t eq
 
 
 Create if statement
+	If Value 1 > Value 1
+	Player one wins hand! Is printed
+	Adds cards to deck 1
+	Displays figure with imgshow
 
 
-Create else if statement
-Deck 1
+Create else if statement - Deck 1
+	Elseif Value 2 > Value 1
+	Player two wins hand! Is printed
+	Adds cards to deck 2
+	Displays figure with imgshow
+
+Create else if statement - Deck 2
 
 
-Create else if statement
-Deck 2
+Create else if statement - Deck 1 == Deck 1
+	Value1==Value2
+	War is printed
+	Goes back through the previous if elseif to determine who wins the war
+	Displays figure with imgshow
 
-
-Create else if statement
-Deck 1 == Deck 1
-
-
-End
+Render
 
 
 Go to next card
+	use x = x + 1
 
 
 Create show deck length for player 1 and player 2
@@ -46,3 +54,7 @@ Print player 1 or player 2 wins when loop reaches zero
 
 Bonus
 Reset game by adding button to call initialize(); function
+
+Notes - 
+Add sounds - https://repl.it/@davesheinbein/Playing-Audio-in-the-Browser
+Add cards - https://repl.it/@davesheinbein/Use-CSS-Card-Library
