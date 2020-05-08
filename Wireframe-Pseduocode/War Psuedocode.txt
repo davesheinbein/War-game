@@ -28,13 +28,13 @@ Create else if statement - Deck 1
 Create else if statement - Deck 2
 
 
-Create else if statement - Deck 1 == Deck 1
+Create else if statement - Deck 1 == Deck 2
 	Value1==Value2
 	War is printed
 	Goes back through the previous if elseif to determine who wins the war
 	Displays figure with imgshow
 
-Render
+End
 
 
 Go to next card

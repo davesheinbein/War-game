@@ -10,28 +10,15 @@ let suits = ['S', 'C', 'D', 'H']; // 'spades', 'clubs', 'diamond', 'hearts'
 let ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 let deck = []
 
-// Might use below confirm with Alex/Michael vvvv
-
-// const cardsLookup = {
-//     player1: {
-//         playerNo: '1';
-//         suits: ['spades', 'clubs', 'diamond', 'hearts'];
-//         ranks: ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-//         deck: 52
-//     },
-//     player2: {
-//         playerNo: '-1';
-//         suits: ['spades', 'clubs', 'diamond', 'hearts'];
-//         ranks: ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-//         deck: 52
-//     },
-//     totalCards: {
-//         deck: `${player1.deck} + ${player2.deck}`
-//     }
-// };
-
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+const cardsLookup = {
+	    player1: {
+	        playerNo: '1',
+	        playerDeck: a
+	    },
+	    player2: {
+	        playerNo: '-1',
+	        playerDeck: b
+	    },
 
 /*----- app's state (variables) -----*/ 
 
@@ -67,9 +54,9 @@ init()
 function init(){
     // innitializes state variables
     scores = {
-        player1: 0,
-        war: 0,
-        player2: 0
+        player1Score: 0,
+        warScores: (0 === 0),
+        player2Score: 0
     };
     results = {
         player1: 'ranks', // Discuss with Alex or Michael
@@ -78,7 +65,7 @@ function init(){
     winner = null; 'player, tie, computer'
     // remember to reactivate render vvvv
 
-    // render() // call in the init
+    render() // call in the init
 };
 
 /*----- functions -----*/

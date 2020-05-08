@@ -3,29 +3,50 @@ html, * {
     box-sizing: border-box;
   }
   
-  body {
+body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    width: 200vw;
+    margin: 0;
+    border: 0;
     justify-content: center;
     align-content: center;
-  }
-  
-  main {
+    background-color: cornflowerblue;
+}
+
+main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-  }
+}
 
+/* Fiure out why the box isn't shifting */
+.players-names {
+    flex-direction: row;
+    flex-basis: 10px;
+}
 
-  img {
-      width: 30%;
-  }
+.players-cards {
+    flex-direction: row;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    border: 4px dotted grey;
-  
-  }
+img {
+    width: 30%;
+    flex-direction: row;
+}
+
+button {
+    background-color: darkgreen;
+    color: whitesmoke;
+    font-size: 24px;
+    padding: 14px 40px;
+    border-radius: 50%;
+    border: 2px solid darkgreen;
+}
+
+button:hover {
+    color: black;
+    background-color: white;
+    border: 3px whitesmoke;
+}
