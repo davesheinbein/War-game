@@ -1,3 +1,5 @@
+Font URL - https://fonts.google.com/specimen/Press+Start+2P?query=art&preview.text=War!&preview.text_type=custom&sidebar.open&selection.family=Press+Start+2P
+
 // Might use below discuss with collegues and Alex/Michael vvvv
 
 	// const cardsLookup = {
@@ -32,4 +34,4 @@ Remember to
 
 
 Now that Deck of 52 cards is built consider using 1 deck of 52 
-	instead of 2 decks
+	instead of 2 decks that add up to 104

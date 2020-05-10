@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>War Game!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script defer src="js/main.js"></script>
 </head>
 <body>
     <main>
+      <div class="contatiner">
+        <section>
+            <h3>This means War!</h3>
+        </section>
+      
         <div id="players-names">
             <h2>Player 1</h2>
             <h2>Player 2</h2>
         </div>
+
         <div id="players-cards">
-            <h1 id="player1-cards">52</h1>
-            <h1 id="player2-cards">52</h1>
+            <h1 id="player1-cardA">52</h1>
+            <h1 id="player2-cardB">52</h1>
         </div>
+
         <div id="player-Imgs">
             <div id="player1-result">
                 <!-- inserted place holder image below remember to remove -->
@@ -27,11 +35,13 @@
                 <img src="https://upload.wikimedia.org/wikipedia/en/6/6f/War_official_poster.jpg">
             </div>
         </div>
-        <div>
-            <!-- decide which sounds better to flip cards -->
-            <button>Reset</button> <!-- call init function - alert or print on screen (with fadeout) I Declare War! -->
-            <button>Flip!</button> <!-- Flips cards on either players side-->
+
+        <div id="buttonsCss">
+            <button id="flipButton">Flip!</button> <!-- Flips cards on either players side-->
+           <!-- decide which sounds better to flip cards -->
+            <button id="resetButton">Reset</button> <!-- call init function - alert or print on screen (with fadeout) I Declare War! -->
         </div>
+      </div>
 	</main>
 </body>
 </html>
