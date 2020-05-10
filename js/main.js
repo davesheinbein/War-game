@@ -6,24 +6,47 @@
 // Load 2 decks (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
 // Create/Find images for 2 decks to shuffle card
 
-let suits = ['S', 'C', 'D', 'H']; // 'spades', 'clubs', 'diamond', 'hearts'
-let ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-let deck = []
+class Deck {
+    constructor() {
+        this.deck = [];
 
-const cardsLookup = {
-	    player1: {
-	        playerNo: '1',
-	        playerDeck: a
-	    },
-	    player2: {
-	        playerNo: '-1',
-	        playerDeck: b
-	    },
+        const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']; // 'spades', 'clubs', 'diamond', 'hearts'
+        const numValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'Jack', 'Queen', 'King', 'Ace']; // Ace is high
+
+        for (let suit in suits) {
+            for (let numValue in numValues) {
+                this.deck.push(`${numValues[numValue]} ${suits[suit]}`);
+            }
+        }
+    }
+}
+
+const deckOne = new Deck();
+console.log(deckOne.deck);
+
+// VVVVVV refactoring code found a better way VVVVV
+
+// let suits = ['S', 'C', 'D', 'H']; // 'spades', 'clubs', 'diamond', 'hearts'
+// let ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+// let deck = []
+
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+// const cardsLookup = {
+// 	    player1: {
+// 	        playerNo: '1',
+// 	        playerDeck: a
+// 	    },
+// 	    player2: {
+// 	        playerNo: '-1',
+// 	        playerDeck: b
+// 	    },
 
 /*----- app's state (variables) -----*/ 
 
 
-let scores; // this is the player and computer's scores, and number of ties
+let scores; // this is the player and computer's scores and number of ties
 let results; // this is the player and computer's results
 let winner; // who was the winner
 
@@ -49,33 +72,41 @@ const resultsElements = {
 
 /*----- event listeners -----*/ 
 
-init()
 
-function init(){
-    // innitializes state variables
-    scores = {
-        player1Score: 0,
-        warScores: (0 === 0),
-        player2Score: 0
-    };
-    results = {
-        player1: 'ranks', // Discuss with Alex or Michael
-        player2: 'ranks' // Discuss with Alex or Michael
-    }
-    winner = null; 'player, tie, computer'
-    // remember to reactivate render vvvv
+// init();
 
-    render() // call in the init
-};
+// function init(){
+//     // innitializes state variables
+//     scores = {
+//         player1Score: 0,
+//         player2Score: 0,
+//         warScores: (0 === 0) //
+//     };
+//     results = {
+//         player1: 'ranks', // Discuss with Alex or Michael
+//         player2: 'ranks' // Discuss with Alex or Michael
+//     }
+//     winner = null; 'player, tie, computer'
+//     // remember to reactivate render vvvv
+
+//     // render() // call in the init
+// };
 
 /*----- functions -----*/
 
-for (let suitCounter = 0; suitCounter <4; suitCounter++) {
-    for (let rankCounter = 0; rankCounter < 13; rankCounter++) {
-        deck.push(ranks[rankCounter] + suits[suitCounter]);
-    }
-}
-console.log(deck);
+
+// VVVVVVVVVV Refactoring code discovered a better way VVVVVVVVV
+
+// for (let suitCounter = 0; suitCounter <4; suitCounter++) {
+//     for (let rankCounter = 0; rankCounter < 13; rankCounter++) {
+//         deck.push(ranks[rankCounter] + ' ' + suits[suitCounter]);
+//     }
+// }
+// console.log(deck);
+
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 // Create a while loop with an endloop conditional statement that stop doesn’t equal to zero
 
