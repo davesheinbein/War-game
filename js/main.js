@@ -6,31 +6,57 @@
 // Load 2 decks (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
 // Create/Find images for 2 decks to shuffle card
 
-class Deck {
-    constructor() {
-        this.deck = [];
-
-        const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']; // 'spades', 'clubs', 'diamond', 'hearts'
-        const numValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'Jack', 'Queen', 'King', 'Ace']; // Ace is high
-
-        for (let suit in suits) {
-            for (let numValue in numValues) {
-                this.deck.push(`${numValues[numValue]} ${suits[suit]}`);
-            }
-        }
+class Card { // Sets card parameters for the properties suit and numValues
+    constructor(suit, numValue) {
+        this.suit = suit;
+        this.numValue = numValue;
     }
 }
 
-const deckOne = new Deck();
-console.log(deckOne.deck);
+class Deck { // all aespects of the deck
+    constructor() {
+        this.deck = [];
+    }
 
-// VVVVVV refactoring code found a better way VVVVV
+    createDeck(suits, numValues) {   
+        for(let suit of suits) { // sets suit for each idx of the arr suits
+            for(let numValue of numValues) { // sets numValue 
+                this.deck.push(new Card(suit, numValue));
+            }
+        }
+        return this.deck;
+    }
 
-// let suits = ['S', 'C', 'D', 'H']; // 'spades', 'clubs', 'diamond', 'hearts'
-// let ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-// let deck = []
+    shuffle() {
+        let counter = this.deck.length, tempCounter, iteration;
 
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        while(counter) { // flipping elements in the array below
+            iteration = Math.floor(Math.random() * counter--); 
+            tempCounter = this.deck[counter];
+            this.deck[counter] = this.deck[iteration];
+            this.deck[iteration] = tempCounter;
+        }
+        return this.deck;
+    }
+
+    deal(){
+        let hand = [];
+        while(hand.length < 26) { // deals 26 cards
+            hand.push(this.deck.pop());
+        }
+        return hand;
+    }
+    
+}
+
+let suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']; // 'spades', 'clubs', 'diamond', 'hearts'
+let numValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'Jack', 'Queen', 'King', 'Ace']; // Ace is high
+let deck = new Deck();
+
+deck.createDeck(suits, numValues); // creates the deck
+deck.shuffle();  // shuffles the deck
+deck.deal(); // Deals cards
+console.log(deck);
 
 
 // const cardsLookup = {
@@ -45,8 +71,7 @@ console.log(deckOne.deck);
 
 /*----- app's state (variables) -----*/ 
 
-
-let scores; // this is the player and computer's scores and number of ties
+let scores; // this is the player and computer's number of wins
 let results; // this is the player and computer's results
 let winner; // who was the winner
 
@@ -92,19 +117,9 @@ const resultsElements = {
 //     // render() // call in the init
 // };
 
+
 /*----- functions -----*/
 
-
-// VVVVVVVVVV Refactoring code discovered a better way VVVVVVVVV
-
-// for (let suitCounter = 0; suitCounter <4; suitCounter++) {
-//     for (let rankCounter = 0; rankCounter < 13; rankCounter++) {
-//         deck.push(ranks[rankCounter] + ' ' + suits[suitCounter]);
-//     }
-// }
-// console.log(deck);
-
-//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 
