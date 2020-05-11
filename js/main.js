@@ -23,6 +23,9 @@ let playerOnePnts = 0;
 let playerTwoDeck = [];	// empty the deck for a clean slate
 let playerTwoPnts = 0;
 
+let playerOneTotal = document.getElementById('player1-card')
+let playerTwoTotal = document.getElementById('player2-card')
+
 /*----- event listeners -----*/ 
 
 // document.querySelector('flipButton')addEventListener('click', init)
@@ -45,17 +48,6 @@ while (c < numOfCardsInDeck) {
     }
 }
 
-// Splits the deck and assigns 
-// the array to both deck 1 or 2
-let assignDeck = function(arr){ 
-    for(var i = 0; i < (arr.length); i++){
-        if (i % 2 === 0) {
-            playerOneDeck.push(arr[i]);
-		} else {
-            playerTwoDeck.push(arr[i]);
-		}; 
-    };
-};	
 
 // use the > Fisher-Yates shuffle < to shuffle cards around
 let shuffle = function(arr) {
@@ -68,12 +60,23 @@ let shuffle = function(arr) {
 	arr = arr;
 	return arr;
 }
+// Splits the deck and assigns 
+// the array to both deck 1 or 2
+let assignDeck = function(arr){ 
+    for(var i = 0; i < (arr.length); i++){
+        if (i % 2 === 0) {
+            playerOneDeck.push(arr[i]);
+        } else {
+            playerTwoDeck.push(arr[i]);
+        }; 
+    };
+};	
 
 // Decides who wins based on how many points they have
-let winner = function (playerOnePnts, playerTwoPnts) {
-    if (playerOnePnts >= 5) {
+let winner = function () {
+    if (playerOneDeck.length >= 28) {
         return alert("Player One Wins");
-	} else if (playerTwoPnts >= 5) {
+	} else if (playerTwoDeck.length >= 28) {
         return alert("Player Two Wins");
 	} else {
         return false;
@@ -87,43 +90,40 @@ init();
 function init() { // Starts game attached to button to flip cards
     let shuffleDeck = shuffle(card)
     assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
+    render();
+}
+    
+function render() {
+    playerTwoTotal.textContent = playerTwoDeck.length
+    playerOneTotal.textContent = playerOneDeck.length
+    winner();
 }
 
 function warGameCheck(){
-    // console.log(playerOneDeck.slice(0, 3)) // logs first 3 array in object 
-    if (playerOneDeck[war].value === playerTwoDeck[war].value) {
-        let playerOneWar = playerOneDeck.slice(2, 3); // pulls 3rd array out of object
-        let playerTwoWar = playerTwoDeck.slice(2, 3); // pulls 3rd array out of object
-        playerOneWar === playerTwoWar
-
-
-
-                // war += 2;
-                // bonus += 2;
-
-                alert('War');
-        }
-    };
-    if (playerOneDeck[war].value > playerTwoDeck[war].value) {
-
-
-
-        // playerOnePnts++;
-        // playerOnePnts += bonus;
-        // war++;
-
-        // alert('Player ones hand')
-    } else {
-
-
-
-        // playerTwoPnts++;
-        // playerTwoPnts += bonus;
-        // war++;
-        
-        // alert('Player twos hand')
+    // playerOneDeck[war].value
+    let valueOne = playerOneDeck.shift()
+    let valueTwo = playerTwoDeck.shift()
+    if (valueOne.value > valueTwo.value) {
+        playerOneDeck.push(valueOne, valueTwo)
+        alert('Player 1 Wins round')
+    } else if (valueOne.value < valueTwo.value) {
+        playerTwoDeck.push(valueOne, valueTwo)
+        alert('Player 2 Wins round')
+    } else { 
+        playerOneDeck.push(valueOne)
+        playerTwoDeck.push(valueTwo)
+        alert ('Tie')
     }
+    console.log(playerOneDeck)
+    console.log(playerTwoDeck)
+    render();
 }
+
 
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
 // document.querySelector('#player-Imgs').querySelector('player1-result img'); // testing
+
+
+
+ // console.log(playerOneDeck.slice(0, 3)) // logs first 3 array in object 
+ 
