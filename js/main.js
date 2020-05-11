@@ -5,29 +5,24 @@
 //  Number of cards in the deck defined
 numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
 
-// First player to reach 5 points wins
-totalPoints = 5;
-
 numOfCardsFlippedWar = 3;
 numOfCardsFlippedRegularly = 1;
 
 /*----- app's state (variables) -----*/ 
 
-card = {
-    id: 0,
-    value: 0,
-    rank: '',
-    suite: '',
-    img: '',
-}
 
 
 /*----- cached element references -----*/ 
 
-let fullDeck = []; // array of card objects
+let card = {};
+const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
+const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+const suite = ['hearts','diamonds','spades','clubs']; // Hearts, Diamonds, Spades, Clubs
 
-
-
+let playerOneDeck = [];	// empty the deck for a clean slate
+let playerOnePnts = 0;
+let playerTwoDeck = [];	// empty the deck for a clean slate
+let playerTwoPnts = 0;
 
 /*----- event listeners -----*/ 
 
@@ -36,13 +31,6 @@ let fullDeck = []; // array of card objects
 
 /*----- functions -----*/
 
-function initializeDeck(deck) {
-    let deck = [];	// empty the deck for a clean slate
-
-	let card = {};
-	const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
-	const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-    const suite = ['hearts','diamonds','spades','clubs']; // Hearts, Diamonds, Spades, Clubs
     
 let c = 0; // single card
 while (c < numOfCardsInDeck) {
