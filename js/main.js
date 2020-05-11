@@ -6,68 +6,9 @@
 // Load 2 decks (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
 // Create/Find images for 2 decks to shuffle card
 
-class Card { // Sets card parameters for the properties suit and numValues
-    constructor(suit, numValue) {
-        this.suit = suit;
-        this.numValue = numValue;
-    }
-}
-
-class Deck { // all aespects of the deck
-    constructor() {
-        this.deck = [];
-    }
-
-    createDeck(suits, numValues) {   
-        for(let suit of suits) { // sets suit for each idx of the arr suits
-            for(let numValue of numValues) { // sets numValue 
-                this.deck.push(new Card(suit, numValue));
-            }
-        }
-        return this.deck;
-    }
-
-    shuffle() {
-        let counter = this.deck.length, tempCounter, iteration;
-
-        while(counter) { // flipping elements in the array below
-            iteration = Math.floor(Math.random() * counter--); 
-            tempCounter = this.deck[counter];
-            this.deck[counter] = this.deck[iteration];
-            this.deck[iteration] = tempCounter;
-        }
-        return this.deck;
-    }
-
-    deal(){
-        let hand = [];
-        while(hand.length < 26) { // deals 26 cards
-            hand.push(this.deck.pop());
-        }
-        return hand;
-    }
-    
-}
-
-let suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']; // 'spades', 'clubs', 'diamond', 'hearts'
-let numValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'Jack', 'Queen', 'King', 'Ace']; // Ace is high
-let deck = new Deck();
-
-deck.createDeck(suits, numValues); // creates the deck
-deck.shuffle();  // shuffles the deck
-deck.deal(); // Deals cards
-console.log(deck);
 
 
-// const cardsLookup = {
-// 	    player1: {
-// 	        playerNo: '1',
-// 	        playerDeck: a
-// 	    },
-// 	    player2: {
-// 	        playerNo: '-1',
-// 	        playerDeck: b
-// 	    },
+
 
 /*----- app's state (variables) -----*/ 
 
