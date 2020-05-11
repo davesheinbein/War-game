@@ -1,9 +1,16 @@
 /*----- constants -----*/ 
 
-// Start the game
 // Define constants to start game
 
-// Load 2 decks (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
+//  Number of cards in the deck defined
+numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
+
+// First player to reach 5 points wins
+totalPoints = 5;
+
+numOfCardsFlippedWar = 3;
+numOfCardsFlippedRegularly = 1;
+
 // Create/Find images for 2 decks to shuffle card
 
 
@@ -12,56 +19,60 @@
 
 /*----- app's state (variables) -----*/ 
 
-let scores; // this is the player and computer's number of wins
-let results; // this is the player and computer's results
-let winner; // who was the winner
+card = {
+    id: 0,
+    value: 0,
+    rank: '',
+    suite: '',
+    image url: '',
+    cssId: '',
+    owner: null
+}
 
 
 /*----- cached element references -----*/ 
 
-// Prompt users to play (two players -1, 1. No tie game require)
+let fullDeck = []; // array of card objects
 
-const scoreElemenets = {
-    player1: document.querySelector('#player1-score'),
-    player2: document.querySelector('#player2-score')
-};
-const resultsElements = {
-    player1: document.querySelector('#player1-result img'),
-    player2: document.querySelector('#player2-result img')
-    
-};
-// Add back in once you know what to put vvv
 
-// winner = // 104 cards
-// }
 
 
 /*----- event listeners -----*/ 
 
 
-// init();
-
-// function init(){
-//     // innitializes state variables
-//     scores = {
-//         player1Score: 0,
-//         player2Score: 0,
-//         warScores: (0 === 0) //
-//     };
-//     results = {
-//         player1: 'ranks', // Discuss with Alex or Michael
-//         player2: 'ranks' // Discuss with Alex or Michael
-//     }
-//     winner = null; 'player, tie, computer'
-//     // remember to reactivate render vvvv
-
-//     // render() // call in the init
-// };
 
 
 /*----- functions -----*/
 
+function initializeDeck(deck) {
+    let deck = [];	// empty the deck for a clean slate
 
+	let card = {};
+	const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
+	const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+    const suite = ['h','d','s','c']; // Hearts, Diamonds, Spades, Clubs
+    
+    let c = 1; // single card
+    while (c <= numOfCardsInDeck) {
+        for (let s = 0; s <= 3; s++) { // s is single suit
+            for (let rv = 0; rv <= 12; rv++) { // rv is rank and value
+                card[c] = {
+                    id: c,
+                    value: value[rv],
+                    rank: rank[rv],
+                    suite: suite[s],
+                    image url: '',
+                    cssId: '',
+                    owner: null
+                }
+                deck.push(card[c]); // insert card into the fullDeck array
+                c++;
+            }
+        }
+    }
+}
+
+function  
 
 
 // Create a while loop with an endloop conditional statement that stop doesn’t equal to zero
