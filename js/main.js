@@ -13,7 +13,7 @@ numOfCardsFlippedRegularly = 1;
 
 
 /*----- cached element references -----*/ 
-
+let war = 0;
 let cards = [];
 
 const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
@@ -72,11 +72,11 @@ let shuffle = function(array) {
 	return array;
 }
 
-let winner = function (playerPoints, computerPoints) {
-	if (playerPoints >= 5) {
-		
-	} else if (computerPoints >= 5) {
-		
+let winner = function (playerOnePnts, playerTwoPnts) {
+	if (playerOnePnts >= 5) {
+		return alert("Player One Wins");
+	} else if (playerTwoPnts >= 5) {
+		return alert("Player Two Wins");
 	} else {
 		return false;
 	}
