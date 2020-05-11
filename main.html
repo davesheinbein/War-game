@@ -6,6 +6,7 @@
     <title>War Game!</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./card-deck-css/css/cardstarter.css">
     <script defer src="js/main.js"></script>
 </head>
 <body>
@@ -20,24 +21,20 @@
             <h2>Player 2</h2>
         </div>
 
-        <div id="players-cards">
-            <h1 id="player1-card">52</h1>
-            <h1 id="player2-card">52</h1>
+        <div id="playersCards">
+            <h1 id="playerOneCardTotal">26</h1>
+            <h1 id="playerTwoCardTotal">26</h1>
         </div>
 
-        <div id="player-Imgs">
-            <div id="player1-result">
-                <!-- inserted place holder image below remember to remove -->
-                <img src="https://upload.wikimedia.org/wikipedia/en/6/6f/War_official_poster.jpg">
+        <div id="playerImgs">
+            <div id="playerOneCardImg">
             </div>
-            <div id="player2-result">
-                <!-- inserted place holder image below remember to remove -->
-                <img src="https://upload.wikimedia.org/wikipedia/en/6/6f/War_official_poster.jpg">
+            <div id="playerTwoCardImg">
             </div>
         </div>
 
         <div id="buttonsCss">
-            <button id="flipButton">Flip!</button> <!-- Flips cards on either players side-->
+            <button id="flipButton">Flip to Start!</button> <!-- Flips cards on either players side-->
            <!-- decide which sounds better to flip cards -->
             <button id="resetButton">Reset</button> <!-- call init function - alert or print on screen (with fadeout) I Declare War! -->
         </div>

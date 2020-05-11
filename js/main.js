@@ -7,15 +7,15 @@ let numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // 
 
 /*----- app's state (variables) -----*/ 
 
-const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
+const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A'];
 const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-const suite = ['hearts','diamonds','spades','clubs']; // Hearts, Diamonds, Spades, Clubs
+const suite = ['h','d','s','c']; // Hearts, Diamonds, Spades, Clubs
 const points = 5;
 
 
 /*----- cached element references -----*/ 
-let war = 0;
-let bonus = 0;
+let war = 0; // delete?
+let bonus = 0; // delete?
 let card = []; // empty card to represent individual car
 
 let playerOneDeck = [];	// empty the deck for a clean slate
@@ -23,12 +23,17 @@ let playerOnePnts = 0;
 let playerTwoDeck = [];	// empty the deck for a clean slate
 let playerTwoPnts = 0;
 
-let playerOneTotal = document.getElementById('player1-card')
-let playerTwoTotal = document.getElementById('player2-card')
+let playerOneTotal = document.getElementById('playerOneCardTotal')
+let playerTwoTotal = document.getElementById('playerTwoCardTotal')
+
+let playerOneCardImg = document.getElementById('playerOneCardImg')
+let playerTwoCardImg = document.getElementById('playerTwoCardImg')
+
+let valueOne;
+let valueTwo;
 
 /*----- event listeners -----*/ 
 
-// document.querySelector('flipButton')addEventListener('click', init)
 
 /*----- functions -----*/
 
@@ -41,10 +46,11 @@ while (c < numOfCardsInDeck) {
                 suite: suite[s],
                 rank: rank[rv],
                 value: value[rv],
-                img: 'card-deck-css/images' + rank[rv] + '_of_' + suite[s] + '.svg',
+                cssClass: suite[s] + rank[rv]
             }
             c++;
         }
+
     }
 }
 
@@ -90,19 +96,25 @@ init();
 function init() { // Starts game attached to button to flip cards
     let shuffleDeck = shuffle(card)
     assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
-    render();
+    // render();
 }
     
 function render() {
     playerTwoTotal.textContent = playerTwoDeck.length
     playerOneTotal.textContent = playerOneDeck.length
+
+    console.log(playerOneCardImg)
+    console.log(playerTwoCardImg)
+
+    playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
+    playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
     winner();
 }
 
 function warGameCheck(){
     // playerOneDeck[war].value
-    let valueOne = playerOneDeck.shift()
-    let valueTwo = playerTwoDeck.shift()
+    valueOne = playerOneDeck.shift()
+    valueTwo = playerTwoDeck.shift()
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
         alert('Player 1 Wins round')
@@ -121,9 +133,7 @@ function warGameCheck(){
 
 
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
-// document.querySelector('#player-Imgs').querySelector('player1-result img'); // testing
-
-
+document.querySelector('#resetButton').addEventListener('click', init);
 
  // console.log(playerOneDeck.slice(0, 3)) // logs first 3 array in object 
  
