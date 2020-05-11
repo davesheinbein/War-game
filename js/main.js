@@ -5,9 +5,6 @@
 //  Number of cards in the deck defined
 let numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
 
-// numOfCardsFlippedWar = 3; // number Of Cards Flipped during War is 3
-// numOfCardsFlippedRegularly = 1; // number Of Cards Flipped Regularly is 1
-
 /*----- app's state (variables) -----*/ 
 
 const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
@@ -93,29 +90,40 @@ function init() { // Starts game attached to button to flip cards
 }
 
 function warGameCheck(){
-    // console.log(playerOneDeck[war])
-    // console.log(playerTwoDeck[war])
+    // console.log(playerOneDeck.slice(0, 3)) // logs first 3 array in object 
     if (playerOneDeck[war].value === playerTwoDeck[war].value) {
-        let firstEle = playerOneDeck[war].shift();
-        console.log(firstEle);
+        let playerOneWar = playerOneDeck.slice(2, 3); // pulls 3rd array out of object
+        let playerTwoWar = playerTwoDeck.slice(2, 3); // pulls 3rd array out of object
+        playerOneWar === playerTwoWar
 
 
-        // for (i = 0; i < (playerOneDeck[war]).length; i++) {
-        //     console.log(playerOneDeck[war])
-                war += 2;
-                bonus += 2;
+
+                // war += 2;
+                // bonus += 2;
 
                 alert('War');
         }
     };
     if (playerOneDeck[war].value > playerTwoDeck[war].value) {
-        playerOnePnts++;
-        playerOnePnts += bonus;
-        war++;
+
+
+
+        // playerOnePnts++;
+        // playerOnePnts += bonus;
+        // war++;
+
+        // alert('Player ones hand')
     } else {
-        playerTwoPnts++;
-        playerTwoPnts += bonus;
-        war++;
+
+
+
+        // playerTwoPnts++;
+        // playerTwoPnts += bonus;
+        // war++;
+        
+        // alert('Player twos hand')
     }
+}
 
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
+// document.querySelector('#player-Imgs').querySelector('player1-result img'); // testing
