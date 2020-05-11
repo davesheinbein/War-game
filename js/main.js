@@ -37,11 +37,10 @@ while (c < numOfCardsInDeck) {
     for (let s = 0; s <= 3; s++) { // s is single suit
         for (let rv = 0; rv <= 12; rv++) { // rv is rank and value
             card[c] = {
-                id: c,
                 suite: suite[s],
                 rank: rank[rv],
                 value: value[rv],
-                img: 'card-deck-css/images' + rank[rv] + '_of_' suite[s] + '.svg',
+                img: 'card-deck-css/images' + rank[rv] + '_of_' + suite[s] + '.svg',
             }
             c++;
         }
