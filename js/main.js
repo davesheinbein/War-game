@@ -3,20 +3,22 @@
 // Define constants to start game
 
 //  Number of cards in the deck defined
-numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
+let numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
 
-numOfCardsFlippedWar = 3;
-numOfCardsFlippedRegularly = 1;
+// numOfCardsFlippedWar = 3; // number Of Cards Flipped during War is 3
+// numOfCardsFlippedRegularly = 1; // number Of Cards Flipped Regularly is 1
 
 /*----- app's state (variables) -----*/ 
 
 const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
 const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 const suite = ['hearts','diamonds','spades','clubs']; // Hearts, Diamonds, Spades, Clubs
+const points = 5;
 
 
 /*----- cached element references -----*/ 
 let war = 0;
+let bonus = 0;
 let card = []; // empty card to represent individual car
 
 let playerOneDeck = [];	// empty the deck for a clean slate
@@ -26,7 +28,7 @@ let playerTwoPnts = 0;
 
 /*----- event listeners -----*/ 
 
-
+// document.querySelector('flipButton')addEventListener('click', init)
 
 /*----- functions -----*/
 
@@ -48,27 +50,26 @@ while (c < numOfCardsInDeck) {
 
 // Splits the deck and assigns 
 // the array to both deck 1 or 2
-let assignDeck = function(array){ 
-    for(var i = 0; i < (array.length); i++){
+let assignDeck = function(arr){ 
+    for(var i = 0; i < (arr.length); i++){
         if (i % 2 === 0) {
-            playerOneDeck.push(array[i]);
+            playerOneDeck.push(arr[i]);
 		} else {
-            playerTwoDeck.push(array[i]);
+            playerTwoDeck.push(arr[i]);
 		}; 
     };
 };	
-console.log(assignDeck.length);
 
 // use the > Fisher-Yates shuffle < to shuffle cards around
-let shuffle = function(array) {
-    for (var i = array.length - 1; i > 0; i--) {
+let shuffle = function(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
-    	var temp = array[i];
-    	array[i] = array[j];
-    	array[j] = temp;
+    	var temp = arr[i];
+    	arr[i] = arr[j];
+    	arr[j] = temp;
 	}
-	array = array;
-	return array;
+	arr = arr;
+	return arr;
 }
 
 // Decides who wins based on how many points they have
@@ -86,22 +87,35 @@ let winner = function (playerOnePnts, playerTwoPnts) {
 init();
 
 // defines the init function
-function init() {
+function init() { // Starts game attached to button to flip cards
     let shuffleDeck = shuffle(card)
-    console.log(shuffleDeck)
-    console.log(playerOneDeck)
-    assignDeck().push(playerOneDeck)
-    console.log(playerOneDeck)
+    assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
+}
 
-    while (playerOneDeck[war].value === playerTwoDeck[war].value) {
-        war += 2;
-        alert('War');
+function warGameCheck(){
+    // console.log(playerOneDeck[war])
+    // console.log(playerTwoDeck[war])
+    if (playerOneDeck[war].value === playerTwoDeck[war].value) {
+        let firstEle = playerOneDeck[war].shift();
+        console.log(firstEle);
+
+
+        // for (i = 0; i < (playerOneDeck[war]).length; i++) {
+        //     console.log(playerOneDeck[war])
+                war += 2;
+                bonus += 2;
+
+                alert('War');
+        }
     };
     if (playerOneDeck[war].value > playerTwoDeck[war].value) {
         playerOnePnts++;
+        playerOnePnts += bonus;
+        war++;
     } else {
         playerTwoPnts++;
-    };
-};
+        playerTwoPnts += bonus;
+        war++;
+    }
 
-document.querySelector('#flipButton').addEventListener('click', init);
+document.querySelector('#flipButton').addEventListener('click', warGameCheck);
