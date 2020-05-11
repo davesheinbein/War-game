@@ -11,12 +11,6 @@ totalPoints = 5;
 numOfCardsFlippedWar = 3;
 numOfCardsFlippedRegularly = 1;
 
-// Create/Find images for 2 decks to shuffle card
-
-
-
-
-
 /*----- app's state (variables) -----*/ 
 
 card = {
@@ -61,8 +55,8 @@ function initializeDeck(deck) {
                     value: value[rv],
                     rank: rank[rv],
                     suite: suite[s],
-                    image url: '',
-                    cssId: '',
+                    imageURL: '',
+                    cssID: '',
                     owner: null
                 }
                 deck.push(card[c]); // insert card into the fullDeck array
@@ -72,46 +66,14 @@ function initializeDeck(deck) {
     }
 }
 
-function  
+function shuffleCards(array) {
+	for (var i = array.length - 1; i > 0; i--) {
+    	var j = Math.floor(Math.random() * (i + 1));
+    	var temp = array[i];
+    	array[i] = array[j];
+    	array[j] = temp;
+	}
+	return array;
+};
 
-
-// Create a while loop with an endloop conditional statement that stop doesn’t equal to zero
-
-
-// Create if statement
-// 	If Value 1 > Value 1
-// 	Player one wins hand! Is printed
-// 	Adds cards to deck 1
-// 	Displays figure with imgshow
-
-
-// Create else if statement - Deck 1
-// 	Elseif Value 2 > Value 1
-// 	Player two wins hand! Is printed
-// 	Adds cards to deck 2
-// 	Displays figure with imgshow
-
-// Create else if statement - Deck 2
-
-
-// Create else if statement - Deck 1 == Deck 1
-// 	Value1==Value2
-// 	War is printed
-// 	Goes back through the previous if elseif to determine who wins the war
-// 	Displays figure with imgshow
-
-// End
-
-// Go to next card
-// 	use x = x + 1
-
-
-// Create show deck length for player 1 and player 2
-// Print display how many cards each player 1 and player 2 has
-
-
-// Use if else statement to show if player 1 has all 104 cards print “player 1 wins” else if player 2 has all 104 cards print “player 2 wins”
-
-
-// If player 1 or player 2 has 0 cards then the loop ends 
-// Print player 1 or player 2 wins when loop reaches zero
+console.log(array);
