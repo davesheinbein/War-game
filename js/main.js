@@ -14,7 +14,8 @@ numOfCardsFlippedRegularly = 1;
 
 /*----- cached element references -----*/ 
 
-let card = {};
+let cards = [];
+
 const rank = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace'];
 const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 const suite = ['hearts','diamonds','spades','clubs']; // Hearts, Diamonds, Spades, Clubs
@@ -31,7 +32,7 @@ let playerTwoPnts = 0;
 
 /*----- functions -----*/
 
-    
+//  Creates an array of numOfCardsInDeck = 52 cards 0-52   
 let c = 0; // single card
 while (c < numOfCardsInDeck) {
     for (let s = 0; s <= 3; s++) { // s is single suit
@@ -45,17 +46,38 @@ while (c < numOfCardsInDeck) {
             c++;
         }
     }
-
 }
 
-function shuffleCards(array) {
+// Splits the deck and assigns 
+// the array to both deck 1 or 2
+let assignDeck = function(array){ 
+	for(var i = 0; i < (array.length); i++){
+		if (i % 2 === 0) {
+			playerOneDeck.push(array[i]);
+		} else {
+			playerTwoDeck.push(array[i]);
+		}; 
+	};
+};	
+
+// use the > Fisher-Yates shuffle < to shuffle cards around
+let shuffle = function(array) {
 	for (var i = array.length - 1; i > 0; i--) {
     	var j = Math.floor(Math.random() * (i + 1));
     	var temp = array[i];
     	array[i] = array[j];
     	array[j] = temp;
 	}
+	array = array;
 	return array;
-};
+}
 
-console.log(array);
+let winner = function (playerPoints, computerPoints) {
+	if (playerPoints >= 5) {
+		
+	} else if (computerPoints >= 5) {
+		
+	} else {
+		return false;
+	}
+};
