@@ -83,9 +83,9 @@ let assignDeck = function(arr){
 // Decides who wins based on how many cards they have in their hand
 let winner = function () {
     if (playerOneDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        return alert("Player One Wins");
+        return gameActions.innerHTML = `<div id="${gameActions}">Winner Player 1 !</div>`; 
 	} else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        return alert("Player Two Wins");
+        return gameActions.innerHTML = `<div id="${gameActions}">Winner Player 2 !</div>`;
 	} else {
         return false;
 	}
@@ -119,20 +119,21 @@ function warGameCheck(){
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
         gameActions.innerHTML = `<div id="${gameActions}">Player 1 wins round</div>`
-        // alert('Player 1 Wins round')
     } else if (valueOne.value < valueTwo.value) {
         playerTwoDeck.push(valueOne, valueTwo)
         gameActions.innerHTML = `<div id="${gameActions}">Player 2 wins round</div>`
-        // alert('Player 2 Wins round')
     } else { 
         playerOneDeck.push(valueOne)
         playerTwoDeck.push(valueTwo)
         gameActions.innerHTML = `<div id="${gameActions}">War!</div>`
-        // alert ('Tie')
     }
     console.log(playerOneDeck)
     console.log(playerTwoDeck)
     render();
+}
+
+function resetGame() {
+    
 }
 
 
