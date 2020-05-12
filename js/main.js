@@ -118,24 +118,29 @@ function warGameCheck(){
     valueTwo = playerTwoDeck.shift()
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
-        gameActions.innerHTML = `<div id="${gameActions}">Player 1 wins round</div>`
+        gameActions.innerHTML = `<div id="${gameActions}">Player 1 wins hand</div>`
     } else if (valueOne.value < valueTwo.value) {
         playerTwoDeck.push(valueOne, valueTwo)
-        gameActions.innerHTML = `<div id="${gameActions}">Player 2 wins round</div>`
+        gameActions.innerHTML = `<div id="${gameActions}">Player 2 wins hand</div>`
     } else { 
         playerOneDeck.push(valueOne)
         playerTwoDeck.push(valueTwo)
         gameActions.innerHTML = `<div id="${gameActions}">War!</div>`
     }
-    console.log(playerOneDeck)
-    console.log(playerTwoDeck)
     render();
 }
 
 function resetGame() {
-    
+    init()
+    playerOneTotal.textContent = playerOneDeck.length = 26
+    playerTwoTotal.textContent = playerTwoDeck.length = 26
+   
+    // console.log(playerOneTotal)
+    // console.log(playerOneDeck)
+    // console.log(playerTwoTotal)
+    // console.log(playerTwoDeck)
 }
 
 
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
-document.querySelector('#resetButton').addEventListener('click', init); 
+document.querySelector('#resetButton').addEventListener('click', resetGame); 
