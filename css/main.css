@@ -2,6 +2,15 @@ html, * {
     font-family: 'Press Start 2P', cursive, helvetica;
     box-sizing: border-box;
   }
+
+  body {
+    background-color: #dddddd;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
   
 main {
   background-color: silver; /* in case image doesn't load color will */
@@ -14,8 +23,8 @@ main {
 .contatiner {
   display: flex;
   flex-direction: column;
+  text-align: center;
   justify-content: center;
-  align-content: center;
   margin: 10em;
 }
 
@@ -99,11 +108,17 @@ button:hover {
   border: 2px solid whitesmoke;
 }
 
+#backgroundAudio {
+  font-size: 8px;
+  padding: 2em;
+  color: gold;
+}
+
 /* Iphone screen set up */
 
 /* @media screen and (max-device-width: 480px) and (min-device-width: 320px) { */
   
-}
+/* } */
 
 /* Ipad, computer screen set up */
 

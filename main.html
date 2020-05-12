@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>War Game!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="./card-deck-css/css/cardstarter.css">
@@ -14,7 +15,7 @@
       <div class="contatiner">
         <div id="title">
             <div>This means War!</div>
-            <div id="gameActions">Click Flip! to Begin</div>
+            <div id="gameActions"> <div id="gameText">Flip! to Begin</div></div>
             <div id="rules">-First to 30 Cards Wins-</div>
         </div>
       
@@ -29,9 +30,9 @@
         </div>
 
         <div id="playerImgs">
-            <div id="playerOneCardImg"> <img src="/card-deck-css/images/backs/blue.svg" alt="blue card back">  <!-- TODO: Figure out why these images show up -->
+            <div id="playerOneCardImg">
             </div>
-            <div id="playerTwoCardImg"> <img src="/card-deck-css/images/backs/red.svg" alt="red card back"> <!-- TODO: Figure out why these images show up -->
+            <div id="playerTwoCardImg"> 
             </div>
         </div>
 
@@ -40,6 +41,18 @@
            <!-- decide which sounds better to flip cards -->
             <button id="resetButton">Reset</button> <!-- call init function - alert or print on screen (with fadeout) I Declare War! -->
         </div>
+        
+        <div id="backgroundAudio">
+            <div>
+                <input type="checkbox">Play Background Music
+                <audio style="display: none;" id="bg-player" controls src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_04_-_Sentinel.mp3" loop>
+                </audio>
+            </div>
+            <!-- <div>
+                <input type="checkbox" id="mute">Mute</input>
+            </div> -->
+        </div>
+            
       </div>
 	</main>
 </body>

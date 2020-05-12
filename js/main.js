@@ -8,6 +8,8 @@ let numOfCardsInDeck = 52; // 52 cards = 1 deck
 let valueOne;
 let valueTwo;
 
+const explosionSound = 'file:///Users/davidsheinbein/code/Personal-Repo/War-game/sounds/Tank-Firing.mp3'
+const gunCockedSound = 'file:///Users/davidsheinbein/code/Personal-Repo/War-game/sounds/Gun+Cock.mp3'
 /*----- app's state (variables) -----*/ 
 
 const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A'];
@@ -24,7 +26,12 @@ let playerOnePnts = 0;
 let playerTwoDeck = [];	// empty the deck for a clean slate
 let playerTwoPnts = 0;
 
+// Audio
+const bgPlayer = document.getElementById('bg-player');
+const bgCheckbox = document.querySelector('input[type="checkbox"]');
+// const muteSound = document.querySelector('input[type="checkbox"]');
 
+const player = new Audio();
 
 /*----- event listeners -----*/ 
 
@@ -35,6 +42,10 @@ let playerOneCardImg = document.getElementById('playerOneCardImg')
 let playerTwoCardImg = document.getElementById('playerTwoCardImg')
 
 let gameActions = document.getElementById('gameActions')
+
+// Audio
+bgCheckbox.addEventListener('change', handleBgChanged);
+// muteSound.addEventListener('change', muteAll);
 
 /*----- functions -----*/
 
@@ -82,12 +93,24 @@ let assignDeck = function(arr){
 
 // Decides who wins based on how many cards they have in their hand
 let winner = function () {
+    $("#gameText").fadeOut(3000, function() {
+        // Animation complete.
+      })
     if (playerOneDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        return gameActions.innerHTML = `<div id="${gameActions}">Winner Player 1 !</div>`; 
+        return gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 wins Game</div>`;
+        $("#gameText").fadeIn(1000, function() {
+            // Animation complete.
+          }) 
 	} else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        return gameActions.innerHTML = `<div id="${gameActions}">Winner Player 2 !</div>`;
+        return gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 wins Game</div>`;
+        $("#gameText").fadeIn(1000, function() {
+            // Animation complete.
+          })
 	} else {
         return false;
+        $("#gameText").fadeIn(1000, function() {
+            // Animation complete.
+          })
 	}
 };
 
@@ -96,14 +119,20 @@ init();
 
 // defines the init function
 function init() { // Starts game attached to button to flip cards
+    playerOneDeck = [], playerTwoDeck = [];
     let shuffleDeck = shuffle(card)
     assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
-    // render();
+     console.log(playerOneDeck)
+     console.log(playerTwoDeck)
+    render();
 }
     
 function render() {
     playerTwoTotal.textContent = playerTwoDeck.length
     playerOneTotal.textContent = playerOneDeck.length
+    
+    valueOne = playerOneDeck.shift()
+    valueTwo = playerTwoDeck.shift()
 
     console.log(playerOneCardImg)
     console.log(playerTwoCardImg)
@@ -114,33 +143,57 @@ function render() {
 }
 
 function warGameCheck(){
-    valueOne = playerOneDeck.shift()
-    valueTwo = playerTwoDeck.shift()
+    // gameActions.innerHTML.fadeOut(1000)
+    $("#gameText").fadeOut(5000, function() {
+        // Animation complete.
+      })
+    $("#gameText").remove();
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
-        gameActions.innerHTML = `<div id="${gameActions}">Player 1 wins hand</div>`
+        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 takes card</div>`
+        $("#gameText").fadeIn(1000, function() {
+            // Animation complete.
+          })
     } else if (valueOne.value < valueTwo.value) {
         playerTwoDeck.push(valueOne, valueTwo)
-        gameActions.innerHTML = `<div id="${gameActions}">Player 2 wins hand</div>`
+        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 takes card</div>`
+        $("#gameText").fadeIn(1000, function() {
+            // Animation complete.
+          })
     } else { 
         playerOneDeck.push(valueOne)
         playerTwoDeck.push(valueTwo)
-        gameActions.innerHTML = `<div id="${gameActions}">War!</div>`
+        gameActions.innerHTML = `<div style="display:none" id="gameText">War!</div>`
+        $("#gameText").fadeIn(1000, function() {
+            // Animation complete.
+          })
     }
     render();
 }
 
-function resetGame() {
-    init()
-    playerOneTotal.textContent = playerOneDeck.length = 26
-    playerTwoTotal.textContent = playerTwoDeck.length = 26
-   
-    // console.log(playerOneTotal)
-    // console.log(playerOneDeck)
-    // console.log(playerTwoTotal)
-    // console.log(playerTwoDeck)
+document.querySelector('#resetButton').addEventListener('click', init); 
+document.querySelector('#resetButton').addEventListener('click', playExpSound); 
+
+// Audio selectors & event listeners
+document.querySelector('#flipButton').addEventListener('click', warGameCheck);
+document.querySelector('#flipButton').addEventListener('click', playGunSound);
+document.querySelector('#mute').addEventListener('change', muteAll);
+
+// Audio
+function handleBgChanged() {
+    bgCheckbox.checked ? bgPlayer.play() : bgPlayer.pause();
 }
 
+function playExpSound() {
+    player.src = explosionSound;
+    player.play();
+}
 
-document.querySelector('#flipButton').addEventListener('click', warGameCheck);
-document.querySelector('#resetButton').addEventListener('click', resetGame); 
+function playGunSound() {
+    player.src = gunCockedSound;
+    player.play();
+}
+
+// function muteAll() {
+//     muteSound.checked ? bgPlayer.muted() : bgPlayer.muted();
+// }
