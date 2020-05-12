@@ -122,8 +122,6 @@ function init() { // Starts game attached to button to flip cards
     playerOneDeck = [], playerTwoDeck = [];
     let shuffleDeck = shuffle(card)
     assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
-     console.log(playerOneDeck)
-     console.log(playerTwoDeck)
     render();
 }
     
@@ -133,9 +131,6 @@ function render() {
     
     valueOne = playerOneDeck.shift()
     valueTwo = playerTwoDeck.shift()
-
-    console.log(playerOneCardImg)
-    console.log(playerTwoCardImg)
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
