@@ -123,3 +123,21 @@ Remember to
 
 Now that Deck of 52 cards is built consider using 1 deck of 52 
 	instead of 2 decks that add up to 104
+
+
+// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV	
+const scoreElemenets = {
+    player1: document.querySelector('#player1-score'),
+    player2: document.querySelector('#player2-score')
+};
+const resultsElements = {
+    player1: document.querySelector('#player1-result img'),
+    player2: document.querySelector('#player2-result img')
+    
+};
+// Add back in once you know what to put vvv
+
+// winner = // 104 cards
+// }
+
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

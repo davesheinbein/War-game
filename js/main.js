@@ -3,19 +3,20 @@
 // Define constants to start game
 
 //  Number of cards in the deck defined
-let numOfCardsInDeck = 52; // (52 cards = 1 deck) 104 cards in 2 decks total // consider using only 1 deck
+let numOfCardsInDeck = 52; // 52 cards = 1 deck
+
+let valueOne;
+let valueTwo;
 
 /*----- app's state (variables) -----*/ 
 
 const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A'];
 const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 const suite = ['h','d','s','c']; // Hearts, Diamonds, Spades, Clubs
-const points = 5;
+
 
 
 /*----- cached element references -----*/ 
-let war = 0; // delete?
-let bonus = 0; // delete?
 let card = []; // empty card to represent individual car
 
 let playerOneDeck = [];	// empty the deck for a clean slate
@@ -23,21 +24,22 @@ let playerOnePnts = 0;
 let playerTwoDeck = [];	// empty the deck for a clean slate
 let playerTwoPnts = 0;
 
+
+
+/*----- event listeners -----*/ 
+
 let playerOneTotal = document.getElementById('playerOneCardTotal')
 let playerTwoTotal = document.getElementById('playerTwoCardTotal')
 
 let playerOneCardImg = document.getElementById('playerOneCardImg')
 let playerTwoCardImg = document.getElementById('playerTwoCardImg')
 
-let valueOne;
-let valueTwo;
-
-/*----- event listeners -----*/ 
-
+let gameActions = document.getElementById('gameActions')
 
 /*----- functions -----*/
 
-//  Creates an array of numOfCardsInDeck = 52 cards 0-52   
+// Lays each card out within an array
+//  Creates an array of numOfCardsInDeck = 52 cards 0-51   
 let c = 0; // single card
 while (c < numOfCardsInDeck) {
     for (let s = 0; s <= 3; s++) { // s is single suit
@@ -78,11 +80,11 @@ let assignDeck = function(arr){
     };
 };	
 
-// Decides who wins based on how many points they have
+// Decides who wins based on how many cards they have in their hand
 let winner = function () {
-    if (playerOneDeck.length >= 28) {
+    if (playerOneDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
         return alert("Player One Wins");
-	} else if (playerTwoDeck.length >= 28) {
+	} else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
         return alert("Player Two Wins");
 	} else {
         return false;
@@ -112,19 +114,21 @@ function render() {
 }
 
 function warGameCheck(){
-    // playerOneDeck[war].value
     valueOne = playerOneDeck.shift()
     valueTwo = playerTwoDeck.shift()
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
-        alert('Player 1 Wins round')
+        gameActions.innerHTML = `<div id="${gameActions}">Player 1 wins round</div>`
+        // alert('Player 1 Wins round')
     } else if (valueOne.value < valueTwo.value) {
         playerTwoDeck.push(valueOne, valueTwo)
-        alert('Player 2 Wins round')
+        gameActions.innerHTML = `<div id="${gameActions}">Player 2 wins round</div>`
+        // alert('Player 2 Wins round')
     } else { 
         playerOneDeck.push(valueOne)
         playerTwoDeck.push(valueTwo)
-        alert ('Tie')
+        gameActions.innerHTML = `<div id="${gameActions}">War!</div>`
+        // alert ('Tie')
     }
     console.log(playerOneDeck)
     console.log(playerTwoDeck)
@@ -133,7 +137,4 @@ function warGameCheck(){
 
 
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
-document.querySelector('#resetButton').addEventListener('click', init);
-
- // console.log(playerOneDeck.slice(0, 3)) // logs first 3 array in object 
- 
+document.querySelector('#resetButton').addEventListener('click', init); 
