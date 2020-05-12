@@ -4,7 +4,7 @@ html, * {
   }
 
   body {
-    background-color: #dddddd;
+    background-color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -18,6 +18,9 @@ main {
   background-repeat: no-repeat;
   background-size: fill;
   padding: 10em;
+  width: 100%;
+  height: 100%;
+
 }
 
 .contatiner {
@@ -26,6 +29,8 @@ main {
   text-align: center;
   justify-content: center;
   margin: 10em;
+  /* width: 100%;
+  height: 100%; */
 }
 
 #title {

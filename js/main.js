@@ -177,7 +177,7 @@ document.querySelector('#resetButton').addEventListener('click', playExpSound);
 // Audio selectors & event listeners
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
 document.querySelector('#flipButton').addEventListener('click', playGunSound);
-document.querySelector('#mute').addEventListener('change', muteAll);
+// document.querySelector('#mute').addEventListener('change', muteAll);
 
 // Audio
 function handleBgChanged() {
