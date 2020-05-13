@@ -8,8 +8,8 @@ let numOfCardsInDeck = 52; // 52 cards = 1 deck
 let valueOne;
 let valueTwo;
 
-const explosionSound = '/sounds/Tank-Firing.mp3'
-const gunCockedSound = 'file:///Users/davidsheinbein/code/Personal-Repo/War-game/sounds/Gun+Cock.mp3'
+const explosionSound = 'sounds/Tank-Firing.mp3'
+const gunCockedSound = 'sounds/Gun+Cock.mp3'
 /*----- app's state (variables) -----*/ 
 
 const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A'];

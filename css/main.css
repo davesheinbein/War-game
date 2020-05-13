@@ -21,7 +21,7 @@ main {
   background-repeat: no-repeat;
   background-size: contain cover;
   padding: 10em;
-  width: 100vh;
+  width: 200vh;
   height: 100vw;
 
 }
@@ -32,7 +32,7 @@ main {
   text-align: center;
   justify-content: center;
   margin: 10em;
-  height: 50vh;
+  height: 100vh;
 }
 
 #title {
@@ -132,19 +132,24 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 140vh;
+    width: 100vw;
   }
 
   main {
     display: flex;
     align-content: center;
     margin: 1em;
+    height: 140vh;
+    width: 100vw;
   }
   
   .contatiner {
     display: flex;
     margin: 0 5em;
-    height: 80%;
+    padding-top: 10em;
+    height: 140vh;
+    width: 100vw;
   }
 
   #title {
