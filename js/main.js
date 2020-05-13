@@ -100,7 +100,7 @@ let assignDeck = function(arr){
 
 // Decides who wins based on how many cards they have in their hand
 let winner = function () { // creating a function that sets win conditions with the variable winner
-    if (playerOneDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
+    if (playerOneDeck.length >= 31) { // 30 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() {
             // Animation complete.
           })
@@ -109,7 +109,7 @@ let winner = function () { // creating a function that sets win conditions with 
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
           }) 
-    } else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
+    } else if (playerTwoDeck.length >= 31) { // 30 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() {
             // Animation complete.
           })
