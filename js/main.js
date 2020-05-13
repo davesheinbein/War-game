@@ -8,13 +8,13 @@ let numOfCardsInDeck = 52; // 52 cards = 1 deck
 let valueOne;
 let valueTwo;
 
-const explosionSound = 'file:///Users/davidsheinbein/code/Personal-Repo/War-game/sounds/Tank-Firing.mp3'
+const explosionSound = '/sounds/Tank-Firing.mp3'
 const gunCockedSound = 'file:///Users/davidsheinbein/code/Personal-Repo/War-game/sounds/Gun+Cock.mp3'
 /*----- app's state (variables) -----*/ 
 
 const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A'];
 const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-const suite = ['h','d','s','c']; // Hearts, Diamonds, Spades, Clubs
+const suit = ['h','d','s','c']; // Hearts, Diamonds, Spades, Clubs
 
 
 
@@ -51,15 +51,22 @@ bgCheckbox.addEventListener('change', handleBgChanged);
 
 // Lays each card out within an array
 //  Creates an array of numOfCardsInDeck = 52 cards 0-51   
-let c = 0; // single card
-while (c < numOfCardsInDeck) {
-    for (let s = 0; s <= 3; s++) { // s is single suit
+let c = 0; // c = single card
+while (c < numOfCardsInDeck) { // while loop 
+    // A single card is less than the total number of cards in a deck
+    for (let s = 0; s <= 3; s++) { // for loop
+        // s is single suit, s = 0 (Js is zero based starts count at 0 when indexing array),
+        //      s <= 3 sets array limit to be less than or equal to 3 
+        //      s++ incrimentlly add +1 to itterate through numbers in s 
+        //      starting at 0 and going up to 3 with a total of 4 items
         for (let rv = 0; rv <= 12; rv++) { // rv is rank and value
-            card[c] = { //card object includes
-                suite: suite[s],
-                rank: rank[rv],
-                value: value[rv],
-                cssClass: suite[s] + rank[rv]
+            // does same thing as the s for loop but using rv
+            // 0 - 12 = 13 items
+            card[c] = { // card object includes four properties - suit, rank, value, cssClass
+                suit: suit[s], // Diamond, Spades, Hearts, Clubs
+                rank: rank[rv], // '02','03','04','05','06','07','08','09','10','J','Q','K','A'
+                value: value[rv], // 1,2,3,4,5,6,7,8,9,10,11,12,13
+                cssClass: suit[s] + rank[rv]
             }
             c++;
         }
@@ -94,7 +101,6 @@ let assignDeck = function(arr){
 // Decides who wins based on how many cards they have in their hand
 let winner = function () { // creating a function that sets win conditions with the variable winner
     if (playerOneDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        console.log('playerOneWin')
         $("#gameText").fadeOut(3000, function() {
             // Animation complete.
           })
@@ -104,7 +110,6 @@ let winner = function () { // creating a function that sets win conditions with 
             // Animation complete.
           }) 
     } else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        console.log('playerTwoWin')
         $("#gameText").fadeOut(3000, function() {
             // Animation complete.
           })
