@@ -3,54 +3,99 @@
 // Define constants to start game
 
 //  Number of cards in the deck defined
-let numOfCardsInDeck = 52; // 52 cards = 1 deck
+const numOfCardsInDeck = 52; // 52 cards = 1 deck
 
-let valueOne;
-let valueTwo;
+const explosionSound = 'sounds/Tank-Firing.mp3' 
+// set variable explosionSound to sound mp3
+const gunCockedSound = 'sounds/Gun+Cock.mp3' 
+// set variable gunCockedSound to sound mp3
 
-const explosionSound = 'sounds/Tank-Firing.mp3'
-const gunCockedSound = 'sounds/Gun+Cock.mp3'
+const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A']; 
+// set card variable rank identifier
+
+const value = [1,2,3,4,5,6,7,8,9,10,11,12,13]; 
+// set variable number of cards in each suit
+
+const suit = ['h','d','s','c']; 
+// set variable suit types Hearts, Diamonds, Spades, Clubs
+
+// Audio
+
+const playerAudio = new Audio();
+// sets variable playerAudio to equal creating a new instance of audio
+// new operator lets devs create an instance of a user-defined object type or of one of the built-in object types
+// Audio() constructor creates and returns a new HTMLAudioElement 
+//      which can be either attached to a document for the user to interact with and/or
+//      listen to, or can be used offscreen to manage and play audio.
+
 /*----- app's state (variables) -----*/ 
 
-const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A'];
-const value = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-const suit = ['h','d','s','c']; // Hearts, Diamonds, Spades, Clubs
-
+let valueOne; // Set empty value variable one
+let valueTwo; // Set empty value variable two
 
 
 /*----- cached element references -----*/ 
 let card = []; // empty card to represent individual car
 
 let playerOneDeck = [];	// empty the deck for a clean slate
-let playerOnePnts = 0;
 let playerTwoDeck = [];	// empty the deck for a clean slate
-let playerTwoPnts = 0;
 
-// Audio
-const bgPlayer = document.getElementById('bg-player');
-const bgCheckbox = document.querySelector('input[type="checkbox"]');
-// const muteSound = document.querySelector('input[type="checkbox"]');
 
-const player = new Audio();
+
 
 /*----- event listeners -----*/ 
 
-let playerOneTotal = document.getElementById('playerOneCardTotal')
-let playerTwoTotal = document.getElementById('playerTwoCardTotal')
 
-let playerOneCardImg = document.getElementById('playerOneCardImg')
-let playerTwoCardImg = document.getElementById('playerTwoCardImg')
+// Audio - Background music
+const bgPlayer = document.getElementById('bg-player'); 
+// document represents the webpage loaded into the browser 
+// getElementById represents a specific element by the id that was assigned in this case 'bg-player'
+// bg-player is refrenced in the HTML in the following line <audio style="display: none;" id="bg-player" controls src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Satin/Kai_Engel_-_04_-_Sentinel.mp3" loop>
 
-let gameActions = document.getElementById('gameActions')
+const bgCheckbox = document.querySelector('input[type="checkbox"]');
+// document represents the webpage loaded into the browser 
+// .querySelector returs the first element in the document that matched the specific selector in this case 'input[type="checkbox"]'
+// 'input[type="checkbox"]' references this line <input type="checkbox">Play Background Music
+//      input is the parent and type checkbox is the child
 
-// Audio
 bgCheckbox.addEventListener('change', handleBgChanged);
-// muteSound.addEventListener('change', muteAll);
+// bgCheckbox references the varriable const bgCheckbox
+// .addEventListener listens for when the event change (checkbox is checked/unchecked)
+// when the event change occurs the function handleBgChanged is invoked
+
+
+
+// PlayerTotal Cards in deck
+let playerOneTotal = document.getElementById('playerOneCardTotal')
+// set variable playerOneTotal equal to the dom by element id playerOneCardTotal
+// basically saying what happens to playerOneTotal in the JS happens in the HTML where this Id playerOneCardTotal is located
+
+let playerTwoTotal = document.getElementById('playerTwoCardTotal')
+// set variable playerTwoTotal equal to the dom by element id playerTwoCardTotal
+// basically saying what happens to playerTwoTotal in the JS happens in the HTML where this Id playerTwoCardTotal is located
+
+
+// Player Card Images
+let playerOneCardImg = document.getElementById('playerOneCardImg')
+// set variable playerOneCardImg equal to the dom by element id playerOneCardImg
+// basically saying what happens to playerOneCardImg in the JS happens in the HTML where this Id playerOneCardImg is located
+
+let playerTwoCardImg = document.getElementById('playerTwoCardImg')
+// set variable playerTwoCardImg equal to the dom by element id playerTwoCardImg
+// basically saying what happens to playerTwoCardImg in the JS happens in the HTML where this Id playerTwoCardImg is located
+
+
+// Actions taken by player / winner message printed here
+let gameActions = document.getElementById('gameActions')
+// set variable gameActions equal to the dom by element id gameActions
+// basically saying what happens to gameActions in the JS happens in the HTML where this Id gameActions is located
+
 
 /*----- functions -----*/
 
 // Lays each card out within an array
-//  Creates an array of numOfCardsInDeck = 52 cards 0-51   
+//  Creates an object of arrays that adds up to total numOfCardsInDeck = 52 cards 0-51   
+
 let c = 0; // c = single card
 while (c < numOfCardsInDeck) { // while loop 
     // A single card is less than the total number of cards in a deck
@@ -59,16 +104,19 @@ while (c < numOfCardsInDeck) { // while loop
         //      s <= 3 sets array limit to be less than or equal to 3 
         //      s++ incrimentlly add +1 to itterate through numbers in s 
         //      starting at 0 and going up to 3 with a total of 4 items
-        for (let rv = 0; rv <= 12; rv++) { // rv is rank and value
-            // does same thing as the s for loop but using rv
-            // 0 - 12 = 13 items
+        for (let rv = 0; rv <= 12; rv++) { // for loop
+            // rv is rank and value, rv = 0 (Js is zero based starts count at 0 when indexing array),
+            //      rv <= 12 sets array limit to be less than or equal to 12 
+            //      rv++ incrimentlly add +1 to itterate through numbers in rv 
+            //      starting at 0 and going up to 12 with a total of 13 items
             card[c] = { // card object includes four properties - suit, rank, value, cssClass
                 suit: suit[s], // Diamond, Spades, Hearts, Clubs
                 rank: rank[rv], // '02','03','04','05','06','07','08','09','10','J','Q','K','A'
                 value: value[rv], // 1,2,3,4,5,6,7,8,9,10,11,12,13
-                cssClass: suit[s] + rank[rv]
+                cssClass: suit[s] + rank[rv] // Combines the individual (suit = s) into suits and the individual (rank value = rv) ranks
+                // so they can be called at the same time
             }
-            c++;
+            c++; // Itterates through all of the (c = card) until the object of arrays is full
         }
 
     }
@@ -174,8 +222,8 @@ function warGameCheck(){
             // Animation complete.
           })
     }
-    winner();
-    render();
+    winner(); // Invoke winner funcetion
+    render(); // Invoke render funcetion
 }
 
 document.querySelector('#resetButton').addEventListener('click', init); 
@@ -192,13 +240,13 @@ function handleBgChanged() {
 }
 
 function playExpSound() {
-    player.src = explosionSound;
-    player.play();
+    playerAudio.src = explosionSound;
+    playerAudio.play();
 }
 
 function playGunSound() {
-    player.src = gunCockedSound;
-    player.play();
+    playerAudio.src = gunCockedSound;
+    playerAudio.play();
 }
 
 // function muteAll() {
