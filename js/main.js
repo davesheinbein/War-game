@@ -55,7 +55,7 @@ let c = 0; // single card
 while (c < numOfCardsInDeck) {
     for (let s = 0; s <= 3; s++) { // s is single suit
         for (let rv = 0; rv <= 12; rv++) { // rv is rank and value
-            card[c] = {
+            card[c] = { //card object includes
                 suite: suite[s],
                 rank: rank[rv],
                 value: value[rv],
@@ -92,17 +92,24 @@ let assignDeck = function(arr){
 };	
 
 // Decides who wins based on how many cards they have in their hand
-let winner = function () {
-    $("#gameText").fadeOut(3000, function() {
-        // Animation complete.
-      })
+let winner = function () { // creating a function that sets win conditions with the variable winner
     if (playerOneDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        return gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 wins Game</div>`;
+        console.log('playerOneWin')
+        $("#gameText").fadeOut(3000, function() {
+            // Animation complete.
+          })
+          $("#gameText").remove();    
+        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 wins Game</div>`;
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
           }) 
-	} else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
-        return gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 wins Game</div>`;
+    } else if (playerTwoDeck.length >= 30) { // 30 is the number of cards needed in a players hand to wim
+        console.log('playerTwoWin')
+        $("#gameText").fadeOut(3000, function() {
+            // Animation complete.
+          })
+          $("#gameText").remove();    
+        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 wins Game</div>`;
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
           })
@@ -134,7 +141,6 @@ function render() {
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
-    winner();
 }
 
 function warGameCheck(){
@@ -163,6 +169,7 @@ function warGameCheck(){
             // Animation complete.
           })
     }
+    winner();
     render();
 }
 
