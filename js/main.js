@@ -77,9 +77,9 @@ while (c < numOfCardsInDeck) { // while loop
 
 // use the > Fisher-Yates shuffle < to shuffle cards around
 let shuffle = function(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-    	var temp = arr[i];
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+    	let temp = arr[i];
     	arr[i] = arr[j];
     	arr[j] = temp;
 	}
@@ -89,7 +89,7 @@ let shuffle = function(arr) {
 // Splits the deck and assigns 
 // the array to both deck 1 or 2
 let assignDeck = function(arr){ 
-    for(var i = 0; i < (arr.length); i++){
+    for(let i = 0; i < (arr.length); i++){
         if (i % 2 === 0) {
             playerOneDeck.push(arr[i]);
         } else {
