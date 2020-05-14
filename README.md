@@ -11,8 +11,11 @@ Each player turns up a card at the same time and the player with the higher card
 
 
 Screenshot:
+War Game Sceenshot
+![War Game Sceenshot](imgs/gameScreenshot.png)
 
-![](imgs/gameScreenshot.png)
+War Game Wireframe Sceenshot
+![War Game Sceenshot](Wireframe-Pseduocode/Basic%20Wireframe.png)
 
 
 Technologies Used: 

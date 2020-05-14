@@ -31,8 +31,13 @@ const playerAudio = new Audio();
 
 /*----- app's state (variables) -----*/ 
 
-let valueOne; // Set empty value variable one
-let valueTwo; // Set empty value variable two
+let valueOne; // Set empty value element 
+let valueTwo; // Set empty value element
+
+
+// New
+let valueWarOne = playerOneDeck.slice(0, 2).push(playerTwoDeck); // Set empty value element 
+let valueWarTwo = playerTwoDeck.slice(0, 2).push(playerOneDeck); // Set empty value element 
 
 
 /*----- cached element references -----*/ 
@@ -269,7 +274,13 @@ function warGameCheck(){
         // Animation complete.
 
     if (valueOne.value > valueTwo.value) {
+        // valueOne shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+        // Then it checks if valueOne.value is greater than valueTwo.value
+        // valueTwo shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
         playerOneDeck.push(valueOne, valueTwo)
+        // playerOneDeck.push takes the cards associated with valueOne & valueTwo and adds them to playerOneDeck
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
@@ -277,7 +288,13 @@ function warGameCheck(){
             // Animation complete.
         })
     } else if (valueOne.value < valueTwo.value) {
+        // valueOne shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+        // Then it checks if valueOne.value is less than than valueTwo.value
+        // valueTwo shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
         playerTwoDeck.push(valueOne, valueTwo)
+        // playerTwoDeck.push takes the cards associated with valueOne & valueTwo and adds them to playerTwoDeck
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
@@ -286,12 +303,23 @@ function warGameCheck(){
         })
     } else { 
         playerOneDeck.push(valueOne)
+        // playerOneDeck.push takes the cards associated with valueOne and adds them to playerOneDeck
         playerTwoDeck.push(valueTwo)
+        // playerTwoDeck.push takes the cards associated with valueTwo and adds them to playerTwoDeck
         gameActions.innerHTML = `<div style="display:none" id="gameText">War!</div>`
         $("#gameText").fadeIn(1000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
             // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
+
+            // Pushes 3 cards into opponents deck
+            if (valueOne.value > valueTwo.value) {
+                valueWarTwo;
+            } 
+            else if (valueOne.value < valueTwo.value) {
+                valueWarOne;
+            }
+
         })
     }
     winner(); // Invoke winner function
