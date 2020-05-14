@@ -330,14 +330,25 @@ document.querySelector('#flipButton').addEventListener('click', playGunSound);
 function handleBgChanged() { 
     // creates a function called handleBgChanged
     bgCheckbox.checked ? bgPlayer.play() : bgPlayer.pause();
+    // call bgCheckbox element and figures out if it's checked
+    // if it's checked call bgPlayer and start playing attached music
+    // if it's unchecked call bgPlayer and pause attached music
 }
 
 function playExpSound() {
+    // creates a function called playExpSound
     playerAudio.src = explosionSound;
+    // call playerAudio element by source
+    // explosionSound element conains sound file source location
     playerAudio.play();
+    // call playerAudio and play attached sound
 }
 
 function playGunSound() {
+    // creates a function called playGunSound
     playerAudio.src = gunCockedSound;
+    // call playerAudio element by source
+    // gunCockedSound element conains sound file source location
     playerAudio.play();
+    // call playerAudio and play attached sound
 }
