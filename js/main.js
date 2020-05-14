@@ -6,27 +6,28 @@
 const numOfCardsInDeck = 52; // 52 cards = 1 deck
 
 const explosionSound = 'sounds/Tank-Firing.mp3' 
-// set variable explosionSound to sound mp3
+// set variable name to explosionSound to sound mp3
 const gunCockedSound = 'sounds/Gun+Cock.mp3' 
-// set variable gunCockedSound to sound mp3
+// set variable name to gunCockedSound to sound mp3
 
 const rank = ['02','03','04','05','06','07','08','09','10','J','Q','K','A']; 
-// set card variable rank identifier
+// set card variable name to rank identifier
 
 const value = [1,2,3,4,5,6,7,8,9,10,11,12,13]; 
-// set variable number of cards in each suit
+// set variable name to value which represents number of cards in each suit
 
 const suit = ['h','d','s','c']; 
-// set variable suit types Hearts, Diamonds, Spades, Clubs
+// set variable name to suit types Hearts, Diamonds, Spades, Clubs
 
 // Audio
 
 const playerAudio = new Audio();
-// sets variable playerAudio to equal creating a new instance of audio
+// sets variable name to playerAudio to equal creating a new instance of audio
 // new operator lets devs create an instance of a user-defined object type or of one of the built-in object types
 // Audio() constructor creates and returns a new HTMLAudioElement 
 //      which can be either attached to a document for the user to interact with and/or
 //      listen to, or can be used offscreen to manage and play audio.
+
 
 /*----- app's state (variables) -----*/ 
 
@@ -35,12 +36,11 @@ let valueTwo; // Set empty value variable two
 
 
 /*----- cached element references -----*/ 
-let card = []; // empty card to represent individual car
 
-let playerOneDeck = [];	// empty the deck for a clean slate
-let playerTwoDeck = [];	// empty the deck for a clean slate
+let card = []; // Set card to empty card to represent individual car
 
-
+let playerOneDeck = [];	// Set playerOneDeck to an empty the deck for a clean slate
+let playerTwoDeck = [];	// Set playerTwoDeck to an empty the deck for a clean slate
 
 
 /*----- event listeners -----*/ 
@@ -62,7 +62,6 @@ bgCheckbox.addEventListener('change', handleBgChanged);
 // bgCheckbox references the varriable const bgCheckbox
 // .addEventListener listens for when the event change (checkbox is checked/unchecked)
 // when the event change occurs the function handleBgChanged is invoked
-
 
 
 // PlayerTotal Cards in deck
@@ -116,7 +115,7 @@ while (c < numOfCardsInDeck) { // while loop
                 cssClass: suit[s] + rank[rv] // Combines the individual (suit = s) into suits and the individual (rank value = rv) ranks
                 // so they can be called at the same time
             }
-            c++; // Itterates through all of the (c = card) until the object of arrays is full
+            c++; // Itterates through all of the (c = card properties) until the object of arrays is full
         }
 
     }
@@ -124,80 +123,131 @@ while (c < numOfCardsInDeck) { // while loop
 
 
 // use the > Fisher-Yates shuffle < to shuffle cards around
-let shuffle = function(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+// For more information on the shuffle (https://www.frankmitchell.org/2015/01/fisher-yates/) or (https://bost.ocks.org/mike/shuffle/)
+let shuffle = function(arr) { 
+    // set varriable name to shuffle 
+    // create a function and pass arr (arr = array) through it
+    for (let i = arr.length - 1; i > 0; i--) { // for loop
+        // i equalls the length of the passed through arr minus 1
+        //      i is greater than 0 (arr.length - 1) is higher than 0
+        //      i decrements -1 through each element in (arr.length - 1) until it hits 0
         let j = Math.floor(Math.random() * (i + 1));
-    	let temp = arr[i];
-    	arr[i] = arr[j];
+        //  set variable j equal to Math.floor(Math.random())
+        //      Math.floor() function returns the largest integer less than or equal to a given number
+        //      Math.random() function pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1) with approximately uniform distribution over that range
+        //      (i + 1) is like writing ((arr.length - 1) + 1)
+        let temp = arr[i];
+        //  sets variable temp equal to arr of i = arr.length
+        arr[i] = arr[j];
+        //  sets arr[i] equal to arr[j]
     	arr[j] = temp;
+        //  sets arr[i] equal to temp
+        //  Loops through the three temp => arr[i] => arr[j] => temp
 	}
-	arr = arr;
-	return arr;
+	arr = arr; // sets all arrays equal
+	return arr; // returns final array arr
 }
 // Splits the deck and assigns 
 // the array to both deck 1 or 2
 let assignDeck = function(arr){ 
-    for(let i = 0; i < (arr.length); i++){
-        if (i % 2 === 0) {
+    for(let i = 0; i < (arr.length); i++){ // for loop
+        if (i % 2 === 0) { // if statment
+            // (i % 2 === 0) figres out the remainder of i % 2 and uses a strict comparison to see if it's equal to 0
             playerOneDeck.push(arr[i]);
-        } else {
+            // if the above if statement is even
+            // selects the empty array of playerOneDeck and pushes all the even idx in the array into playerOneDeck
+            //      push() = adds one or more elements to the end of an array and returns the new length of the array
+        } else { // else statment
             playerTwoDeck.push(arr[i]);
+            // if the above if statement is odd
+            // selects the empty array of playerTwoDeck and pushes all the even idx in the array into playerTwoDeck
+            //      push() = adds one or more elements to the end of an array and returns the new length of the array
         }; 
     };
 };	
 
+// Winner function is defined below
 // Decides who wins based on how many cards they have in their hand
 let winner = function () { // creating a function that sets win conditions with the variable winner
-    if (playerOneDeck.length >= 31) { // 30 is the number of cards needed in a players hand to wim
-        $("#gameText").fadeOut(3000, function() {
+    if (playerOneDeck.length >= 31) { // if statement
+        // 31 is the number of cards needed in a players hand to wim
+        $("#gameText").fadeOut(3000, function() { 
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeOut() makes element fade out over 3000 miliseconds
             // Animation complete.
-          })
-          $("#gameText").remove();    
+        })
+        $("#gameText").remove();    
+        // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+        // .removes() removes an element from the HTML
+        // Animation complete.
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 wins Game</div>`;
         $("#gameText").fadeIn(1000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-          }) 
-    } else if (playerTwoDeck.length >= 31) { // 30 is the number of cards needed in a players hand to wim
+        }) 
+    } else if (playerTwoDeck.length >= 31) { // else if statmente
+        // 31 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeOut() makes element fade out over 3000 miliseconds
             // Animation complete.
-          })
-          $("#gameText").remove();    
+        })
+        $("#gameText").remove();    
+        // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+        // .removes() removes an element from the HTML
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 wins Game</div>`;
         $("#gameText").fadeIn(1000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-          })
-	} else {
-        return false;
+        })
+	} else { //else statement 
+        return false; // if neither of the (if or the else if) statments meet their conditions 
         $("#gameText").fadeIn(1000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
           })
 	}
 };
 
-// calls the init() function
+// calls the init() function in global scope
 init();
 
-// defines the init function
+// init function is defined below
 function init() { // Starts game attached to button to flip cards
-    playerOneDeck = [], playerTwoDeck = [];
+    playerOneDeck = [], playerTwoDeck = []; // Set player 1 & 2 decks to be empty strings 
+    // sets as empty strings within init function so strings can be reset when reset button is clicked and calls the init() function
     let shuffleDeck = shuffle(card)
-    assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
+    // sets varible named shuffleDeck to equal shuffle function passing through each of the card
+    assignDeck(shuffleDeck) 
+    // runs assignDeck function passing in shuffleDeck which spits the shuffled cards into two
     render();
+    // calls render function
 }
-    
-function render() {
-    playerTwoTotal.textContent = playerTwoDeck.length
+
+// defines the render function
+function render() { // creates render function
     playerOneTotal.textContent = playerOneDeck.length
+    // references playerOneTotal variable then sets the text content to equal the entire length 
+    //      of the arrays within the object container playerOneDeck
+    //  .textContent => changes the text of a page element
+    playerTwoTotal.textContent = playerTwoDeck.length
+    // references playerOneTotal variable then sets the text content to equal the entire length 
+    //      of the arrays within the object container playerTwoDeck
+    //  .textContent => changes the text of a page element
     
     valueOne = playerOneDeck.shift()
+    // set valueOne equal to playerOneDeck object array and shifts the first element out of the array and returns that element
     valueTwo = playerTwoDeck.shift()
+    // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
 }
 
 function warGameCheck(){
-    // gameActions.innerHTML.fadeOut(1000)
     $("#gameText").fadeOut(5000, function() {
         // Animation complete.
       })
@@ -248,7 +298,3 @@ function playGunSound() {
     playerAudio.src = gunCockedSound;
     playerAudio.play();
 }
-
-// function muteAll() {
-//     muteSound.checked ? bgPlayer.muted() : bgPlayer.muted();
-// }
