@@ -27,7 +27,7 @@ Getting Started:
 - Click the link to begin playing the game
 https://davesheinbein.github.io/War-game/
 
-- Player Choice -
+Player Choice -
 
 If playing alone 
 - You will be player 1
@@ -36,7 +36,7 @@ If playing with someone else
 - The person who clicks Flip! will be Player 1 
 - While the person who doesn't click Flip! will be Player 2
 
-- Game Play Instructions -
+Game Play Instructions -
 
 - Use the Flip! button to begin playing the game
 - Use the Reset button to reset the game
