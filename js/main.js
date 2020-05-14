@@ -28,6 +28,7 @@ const playerAudio = new Audio();
 //      which can be either attached to a document for the user to interact with and/or
 //      listen to, or can be used offscreen to manage and play audio.
 
+
 /*----- app's state (variables) -----*/ 
 
 let valueOne; // Set empty value variable one
@@ -35,12 +36,11 @@ let valueTwo; // Set empty value variable two
 
 
 /*----- cached element references -----*/ 
+
 let card = []; // Set card to empty card to represent individual car
 
 let playerOneDeck = [];	// Set playerOneDeck to an empty the deck for a clean slate
 let playerTwoDeck = [];	// Set playerTwoDeck to an empty the deck for a clean slate
-
-
 
 
 /*----- event listeners -----*/ 
@@ -62,7 +62,6 @@ bgCheckbox.addEventListener('change', handleBgChanged);
 // bgCheckbox references the varriable const bgCheckbox
 // .addEventListener listens for when the event change (checkbox is checked/unchecked)
 // when the event change occurs the function handleBgChanged is invoked
-
 
 
 // PlayerTotal Cards in deck
@@ -167,6 +166,7 @@ let assignDeck = function(arr){
     };
 };	
 
+// Winner function is defined below
 // Decides who wins based on how many cards they have in their hand
 let winner = function () { // creating a function that sets win conditions with the variable winner
     if (playerOneDeck.length >= 31) { // if statement
@@ -212,30 +212,42 @@ let winner = function () { // creating a function that sets win conditions with 
 	}
 };
 
-// calls the init() function
+// calls the init() function in global scope
 init();
 
-// defines the init function
+// init function is defined below
 function init() { // Starts game attached to button to flip cards
-    playerOneDeck = [], playerTwoDeck = [];
+    playerOneDeck = [], playerTwoDeck = []; // Set player 1 & 2 decks to be empty strings 
+    // sets as empty strings within init function so strings can be reset when reset button is clicked and calls the init() function
     let shuffleDeck = shuffle(card)
-    assignDeck(shuffleDeck) // takes shuffleDeck and spits into two
+    // sets varible named shuffleDeck to equal shuffle function passing through each of the card
+    assignDeck(shuffleDeck) 
+    // runs assignDeck function passing in shuffleDeck which spits the shuffled cards into two
     render();
+    // calls render function
 }
-    
-function render() {
-    playerTwoTotal.textContent = playerTwoDeck.length
+
+// defines the render function
+function render() { // creates render function
     playerOneTotal.textContent = playerOneDeck.length
+    // references playerOneTotal variable then sets the text content to equal the entire length 
+    //      of the arrays within the object container playerOneDeck
+    //  .textContent => changes the text of a page element
+    playerTwoTotal.textContent = playerTwoDeck.length
+    // references playerOneTotal variable then sets the text content to equal the entire length 
+    //      of the arrays within the object container playerTwoDeck
+    //  .textContent => changes the text of a page element
     
     valueOne = playerOneDeck.shift()
+    // set valueOne equal to playerOneDeck object array and shifts the first element out of the array and returns that element
     valueTwo = playerTwoDeck.shift()
+    // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
 }
 
 function warGameCheck(){
-    // gameActions.innerHTML.fadeOut(1000)
     $("#gameText").fadeOut(5000, function() {
         // Animation complete.
       })
@@ -286,7 +298,3 @@ function playGunSound() {
     playerAudio.src = gunCockedSound;
     playerAudio.play();
 }
-
-// function muteAll() {
-//     muteSound.checked ? bgPlayer.muted() : bgPlayer.muted();
-// }
