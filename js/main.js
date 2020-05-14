@@ -36,9 +36,8 @@ let valueTwo; // Set empty value element
 
 
 // New
-let valueWarOne = playerOneDeck.slice(0, 2).push(playerTwoDeck); // Set empty value element 
-let valueWarTwo = playerTwoDeck.slice(0, 2).push(playerOneDeck); // Set empty value element 
-
+let valueWarOne; // Set empty value element 
+let valueWarTwo; // Set empty value element 
 
 /*----- cached element references -----*/ 
 
@@ -174,7 +173,7 @@ let assignDeck = function(arr){
 // Winner function is defined below
 // Decides who wins based on how many cards they have in their hand
 let winner = function () { // creating a function that sets win conditions with the variable winner
-    if (playerOneDeck.length >= 31) { // if statement
+    if (playerOneDeck.length >= 52) { // if statement
         // 31 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() { 
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
@@ -191,7 +190,7 @@ let winner = function () { // creating a function that sets win conditions with 
             // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
         }) 
-    } else if (playerTwoDeck.length >= 31) { // else if statmente
+    } else if (playerTwoDeck.length >= 52) { // else if statmente
         // 31 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
@@ -246,7 +245,7 @@ function render() { // creates render function
     valueOne = playerOneDeck.shift()
     // set valueOne equal to playerOneDeck object array and shifts the first element out of the array and returns that element
     valueTwo = playerTwoDeck.shift()
-    // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element
+    // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element    
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
     // selects playerOneCardImg and set the inner HTML (document.getElementById('playerOneCardImg')) to be `<div class="${valueOne.cssClass} card xlarge"></div>`
@@ -302,6 +301,9 @@ function warGameCheck(){
             // Animation complete.
         })
     } else { 
+        valueWarOne = playerOneDeck.slice(0, 5); // Grabs the first 3 arrays in the object of arrays
+        valueWarTwo = playerTwoDeck.slice(0, 5); // Grabs the first 3 arrays in the object of arrays
+
         playerOneDeck.push(valueOne)
         // playerOneDeck.push takes the cards associated with valueOne and adds them to playerOneDeck
         playerTwoDeck.push(valueTwo)
@@ -312,14 +314,28 @@ function warGameCheck(){
             // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
 
-            // Pushes 3 cards into opponents deck
+            // New
+            // Pushes all cards in play into opponents deck
             if (valueOne.value > valueTwo.value) {
-                valueWarTwo;
+                valueWarTwo.forEach(card => {
+                    playerOneDeck.push(card)
+                })
+                playerTwoDeck.pop()
+                playerTwoDeck.pop()
+                playerTwoDeck.pop()
+                playerTwoDeck.pop()
+                playerTwoDeck.pop()
             } 
             else if (valueOne.value < valueTwo.value) {
-                valueWarOne;
+                valueWarOne.forEach(card => {
+                    playerTwoDeck.push(card)
+                })
+                playerOneDeck.pop()
+                playerOneDeck.pop()
+                playerOneDeck.pop()
+                playerOneDeck.pop()
+                playerOneDeck.pop()
             }
-
         })
     }
     winner(); // Invoke winner function
