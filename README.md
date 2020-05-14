@@ -1,6 +1,5 @@
 # **War Game!**
 
-A README.md file with these sections:
 
 ## Description: 
 
@@ -8,7 +7,7 @@ A README.md file with these sections:
 
 
 ## Screenshot:
-###War Game Sceenshot
+### War Game Sceenshot
 ![War Game Sceenshot](imgs/gameScreenshot.png)
 
 ### War Game Wireframe Sceenshot
@@ -41,15 +40,16 @@ A README.md file with these sections:
 ##### - Use the Flip! button to begin playing the game
 ##### - Use the Reset button to reset the game
 
-##### - First to reach 31 cards Wins
-
-#### Good Luck!
+##### - First to reach 52 cards Wins
 
 
 ## Potential Next Steps: 
 
-### - [x] Add sounds to buttons
-### - [x] Add backround music
-### - [] Mute button
-### - [] Volume slider
-### - [] Additional Media Queries 
+##### - [x] Add sounds to buttons
+##### - [x] Add backround music
+##### - [] Mute button
+##### - [] Volume slider
+##### - [] Additional Media Queries 
+
+
+# Good Luck!
