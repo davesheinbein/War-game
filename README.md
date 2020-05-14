@@ -11,6 +11,7 @@ Each player turns up a card at the same time and the player with the higher card
 Background info of the game is a nice touch.
 
 ☐ Screenshot(s): Images of your actual game.
+![](imgs/gameScreenshot.png)
 
 Technologies Used: 
 - HTML
