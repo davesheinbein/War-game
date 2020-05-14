@@ -244,36 +244,58 @@ function render() { // creates render function
     // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
+    // selects playerOneCardImg and set the inner HTML (document.getElementById('playerOneCardImg')) to be `<div class="${valueOne.cssClass} card xlarge"></div>`
+    //      innerHTML => sets or returns the HTML content (inner HTML) of an element
+    // valueOne was set to (playerOneDeck.shift())
+    // cssClass was set to suit[s] + rank[rv]
+    // finds the suit and rank of the element returned after shifting a card out of playerOneDeck
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
+    // selects playerTwoCardImg and set the inner HTML (document.getElementById('playerTwoCardImg')) to be `<div class="${valueTwo.cssClass} card xlarge"></div>`
+    //      innerHTML => sets or returns the HTML content (inner HTML) of an element
+    // finds the suit and rank of the element returned after shifting a card out of playerTwoDeck
+    //      valueTwo was set to (playerTwoDeck.shift())
+    //      cssClass was set to suit[s] + rank[rv]
 }
 
 function warGameCheck(){
     $("#gameText").fadeOut(5000, function() {
+        // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+        // .fadeOut() makes element fade out over 5000 miliseconds
         // Animation complete.
       })
     $("#gameText").remove();
+        // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+        // .removes() removes an element from the HTML
+        // Animation complete.
+
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-          })
+        })
     } else if (valueOne.value < valueTwo.value) {
         playerTwoDeck.push(valueOne, valueTwo)
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-          })
+        })
     } else { 
         playerOneDeck.push(valueOne)
         playerTwoDeck.push(valueTwo)
         gameActions.innerHTML = `<div style="display:none" id="gameText">War!</div>`
         $("#gameText").fadeIn(1000, function() {
+            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
+            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-          })
+        })
     }
-    winner(); // Invoke winner funcetion
-    render(); // Invoke render funcetion
+    winner(); // Invoke winner function
+    render(); // Invoke render function
 }
 
 document.querySelector('#resetButton').addEventListener('click', init); 
