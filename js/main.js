@@ -34,8 +34,6 @@ const playerAudio = new Audio();
 let valueOne; // Set empty value element 
 let valueTwo; // Set empty value element
 
-
-// New
 let valueWarOne; // Set empty value element 
 let valueWarTwo; // Set empty value element 
 
@@ -314,7 +312,6 @@ function warGameCheck(){
             // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
 
-            // New
             // Pushes all cards in play into opponents deck
             if (valueOne.value > valueTwo.value) {
             // valueOne shifts the first element out of the array and returns that element then
