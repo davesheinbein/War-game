@@ -60,7 +60,7 @@ const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
 bgCheckbox.addEventListener('change', handleBgChanged);
 // bgCheckbox references the varriable const bgCheckbox
-// .addEventListener listens for when the event occurs in this case its change (checkbox is checked/unchecked)
+// .addEventListener listens for when the event change (checkbox is checked/unchecked)
 // when the event change occurs the function handleBgChanged is invoked
 
 
@@ -244,114 +244,57 @@ function render() { // creates render function
     // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
-    // selects playerOneCardImg and set the inner HTML (document.getElementById('playerOneCardImg')) to be `<div class="${valueOne.cssClass} card xlarge"></div>`
-    //      innerHTML => sets or returns the HTML content (inner HTML) of an element
-    // valueOne was set to (playerOneDeck.shift())
-    // cssClass was set to suit[s] + rank[rv]
-    // finds the suit and rank of the element returned after shifting a card out of playerOneDeck
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
-    // selects playerTwoCardImg and set the inner HTML (document.getElementById('playerTwoCardImg')) to be `<div class="${valueTwo.cssClass} card xlarge"></div>`
-    //      innerHTML => sets or returns the HTML content (inner HTML) of an element
-    // finds the suit and rank of the element returned after shifting a card out of playerTwoDeck
-    //      valueTwo was set to (playerTwoDeck.shift())
-    //      cssClass was set to suit[s] + rank[rv]
 }
 
 function warGameCheck(){
     $("#gameText").fadeOut(5000, function() {
-        // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
-        // .fadeOut() makes element fade out over 5000 miliseconds
         // Animation complete.
       })
     $("#gameText").remove();
-        // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
-        // .removes() removes an element from the HTML
-        // Animation complete.
-
     if (valueOne.value > valueTwo.value) {
         playerOneDeck.push(valueOne, valueTwo)
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
-            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
-            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-        })
+          })
     } else if (valueOne.value < valueTwo.value) {
         playerTwoDeck.push(valueOne, valueTwo)
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
-            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
-            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-        })
+          })
     } else { 
         playerOneDeck.push(valueOne)
         playerTwoDeck.push(valueTwo)
         gameActions.innerHTML = `<div style="display:none" id="gameText">War!</div>`
         $("#gameText").fadeIn(1000, function() {
-            // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
-            // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
-        })
+          })
     }
-    winner(); // Invoke winner function
-    render(); // Invoke render function
+    winner(); // Invoke winner funcetion
+    render(); // Invoke render funcetion
 }
 
-
-// Button event listeners
 document.querySelector('#resetButton').addEventListener('click', init); 
-// document represents the webpage loaded into the browser 
-// .querySelector returs the first element in the document that matched the specific selector in this case '#resetButton'
-// .addEventListener listens for when the event occurs in this case the event is click
-// when the event click occurs invoke init function
 document.querySelector('#resetButton').addEventListener('click', playExpSound); 
-// document represents the webpage loaded into the browser 
-// .querySelector returs the first element in the document that matched the specific selector in this case '#resetButton'
-// .addEventListener listens for when the event occurs in this case the event is click
-// when the event click occurs invoke playExpSound function
-// Audio
 
-
-// Audio selectors & button event listeners
+// Audio selectors & event listeners
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
-// document represents the webpage loaded into the browser 
-// .querySelector returs the first element in the document that matched the specific selector in this case '#flipButton'
-// .addEventListener listens for when the event occurs in this case the event is click
-// when the event click occurs invoke warGameCheck function
 document.querySelector('#flipButton').addEventListener('click', playGunSound);
-// document represents the webpage loaded into the browser 
-// .querySelector returs the first element in the document that matched the specific selector in this case '#flipButton'
-// .addEventListener listens for when the event occurs in this case the event is click
-// when the event click occurs invoke playGunSound function
-// Audio
+// document.querySelector('#mute').addEventListener('change', muteAll);
 
 // Audio
-function handleBgChanged() { 
-    // creates a function called handleBgChanged
+function handleBgChanged() {
     bgCheckbox.checked ? bgPlayer.play() : bgPlayer.pause();
-    // call bgCheckbox element and figures out if it's checked
-    // if it's checked call bgPlayer and start playing attached music
-    // if it's unchecked call bgPlayer and pause attached music
 }
 
 function playExpSound() {
-    // creates a function called playExpSound
     playerAudio.src = explosionSound;
-    // call playerAudio element by source
-    // explosionSound element conains sound file source location
     playerAudio.play();
-    // call playerAudio and play attached sound
 }
 
 function playGunSound() {
-    // creates a function called playGunSound
     playerAudio.src = gunCockedSound;
-    // call playerAudio element by source
-    // gunCockedSound element conains sound file source location
     playerAudio.play();
-<<<<<<< HEAD
-=======
-    // call playerAudio and play attached sound
->>>>>>> master
 }
