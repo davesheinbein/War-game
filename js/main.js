@@ -180,7 +180,7 @@ let winner = function () { // creating a function that sets win conditions with 
         // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
         // .removes() removes an element from the HTML
         // Animation complete.
-        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 wins Game</div>`;
+        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 Wins Game!</div>`;
         $("#gameText").fadeIn(1000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
             // .fadeIn() makes element fade out over 1000 miliseconds
@@ -196,7 +196,7 @@ let winner = function () { // creating a function that sets win conditions with 
         $("#gameText").remove();    
         // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
         // .removes() removes an element from the HTML
-        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 wins Game</div>`;
+        gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 wins Game!</div>`;
         $("#gameText").fadeIn(1000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
             // .fadeIn() makes element fade out over 1000 miliseconds
