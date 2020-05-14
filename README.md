@@ -15,7 +15,7 @@ War Game Sceenshot
 ![War Game Sceenshot](imgs/gameScreenshot.png)
 
 War Game Wireframe Sceenshot
-![War Game Sceenshot](Wireframe-Pseduocode/Basic%20Wireframe.png)
+![War Game Sceenshot](Wireframe-Pseduocode/wireframe.png)
 
 
 Technologies Used: 
