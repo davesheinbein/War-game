@@ -121,6 +121,13 @@ button:hover {
   color: gold;
 }
 
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
 /* Iphone screen set up */
 
 @media screen and (max-device-width: 480px) and (min-device-width: 320px) {
