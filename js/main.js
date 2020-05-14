@@ -317,24 +317,40 @@ function warGameCheck(){
             // New
             // Pushes all cards in play into opponents deck
             if (valueOne.value > valueTwo.value) {
+            // valueOne shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+            // Then it checks if valueOne.value is less than than valueTwo.value
+            // valueTwo shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
+
                 valueWarTwo.forEach(card => {
+                // for each card in the array valueWarTwo
                     playerOneDeck.push(card)
+                    // adds card element to the end of the array of playerOneDeck
                 })
-                playerTwoDeck.pop()
-                playerTwoDeck.pop()
-                playerTwoDeck.pop()
-                playerTwoDeck.pop()
-                playerTwoDeck.pop()
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
             } 
             else if (valueOne.value < valueTwo.value) {
+            // valueOne shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+            // Then it checks if valueOne.value is less than than valueTwo.value
+            // valueTwo shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
+                
                 valueWarOne.forEach(card => {
+                // for each card in the array valueWarTwo
                     playerTwoDeck.push(card)
+                    // adds card element to the end of the array of playerOneDeck
                 })
-                playerOneDeck.pop()
-                playerOneDeck.pop()
-                playerOneDeck.pop()
-                playerOneDeck.pop()
-                playerOneDeck.pop()
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
             }
         })
     }
