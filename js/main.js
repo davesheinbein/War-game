@@ -60,7 +60,7 @@ const bgCheckbox = document.querySelector('input[type="checkbox"]');
 
 bgCheckbox.addEventListener('change', handleBgChanged);
 // bgCheckbox references the varriable const bgCheckbox
-// .addEventListener listens for when the event change (checkbox is checked/unchecked)
+// .addEventListener listens for when the event occurs in this case its change (checkbox is checked/unchecked)
 // when the event change occurs the function handleBgChanged is invoked
 
 
@@ -298,16 +298,37 @@ function warGameCheck(){
     render(); // Invoke render function
 }
 
-document.querySelector('#resetButton').addEventListener('click', init); 
-document.querySelector('#resetButton').addEventListener('click', playExpSound); 
 
-// Audio selectors & event listeners
+// Button event listeners
+document.querySelector('#resetButton').addEventListener('click', init); 
+// document represents the webpage loaded into the browser 
+// .querySelector returs the first element in the document that matched the specific selector in this case '#resetButton'
+// .addEventListener listens for when the event occurs in this case the event is click
+// when the event click occurs invoke init function
+document.querySelector('#resetButton').addEventListener('click', playExpSound); 
+// document represents the webpage loaded into the browser 
+// .querySelector returs the first element in the document that matched the specific selector in this case '#resetButton'
+// .addEventListener listens for when the event occurs in this case the event is click
+// when the event click occurs invoke playExpSound function
+// Audio
+
+
+// Audio selectors & button event listeners
 document.querySelector('#flipButton').addEventListener('click', warGameCheck);
+// document represents the webpage loaded into the browser 
+// .querySelector returs the first element in the document that matched the specific selector in this case '#flipButton'
+// .addEventListener listens for when the event occurs in this case the event is click
+// when the event click occurs invoke warGameCheck function
 document.querySelector('#flipButton').addEventListener('click', playGunSound);
-// document.querySelector('#mute').addEventListener('change', muteAll);
+// document represents the webpage loaded into the browser 
+// .querySelector returs the first element in the document that matched the specific selector in this case '#flipButton'
+// .addEventListener listens for when the event occurs in this case the event is click
+// when the event click occurs invoke playGunSound function
+// Audio
 
 // Audio
-function handleBgChanged() {
+function handleBgChanged() { 
+    // creates a function called handleBgChanged
     bgCheckbox.checked ? bgPlayer.play() : bgPlayer.pause();
 }
 
