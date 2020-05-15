@@ -31,9 +31,11 @@ const playerAudio = new Audio();
 
 /*----- app's state (variables) -----*/ 
 
-let valueOne; // Set empty value variable one
-let valueTwo; // Set empty value variable two
+let valueOne; // Set empty value element 
+let valueTwo; // Set empty value element
 
+let valueWarOne; // Set empty value element 
+let valueWarTwo; // Set empty value element 
 
 /*----- cached element references -----*/ 
 
@@ -169,7 +171,7 @@ let assignDeck = function(arr){
 // Winner function is defined below
 // Decides who wins based on how many cards they have in their hand
 let winner = function () { // creating a function that sets win conditions with the variable winner
-    if (playerOneDeck.length >= 31) { // if statement
+    if (playerOneDeck.length >= 52) { // if statement
         // 31 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() { 
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
@@ -186,7 +188,7 @@ let winner = function () { // creating a function that sets win conditions with 
             // .fadeIn() makes element fade out over 1000 miliseconds
             // Animation complete.
         }) 
-    } else if (playerTwoDeck.length >= 31) { // else if statmente
+    } else if (playerTwoDeck.length >= 52) { // else if statmente
         // 31 is the number of cards needed in a players hand to wim
         $("#gameText").fadeOut(3000, function() {
             // $("#gameText") uses jquery syntax to select the Id gameText from the HTML
@@ -241,7 +243,7 @@ function render() { // creates render function
     valueOne = playerOneDeck.shift()
     // set valueOne equal to playerOneDeck object array and shifts the first element out of the array and returns that element
     valueTwo = playerTwoDeck.shift()
-    // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element
+    // set valueTwo equal to playerTwoDeck object array and shifts the first element out of the array and returns that element    
 
     playerOneCardImg.innerHTML = `<div class="${valueOne.cssClass} card xlarge"></div>`
     playerTwoCardImg.innerHTML = `<div class="${valueTwo.cssClass} card xlarge"></div>`
@@ -253,24 +255,83 @@ function warGameCheck(){
       })
     $("#gameText").remove();
     if (valueOne.value > valueTwo.value) {
+        // valueOne shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+        // Then it checks if valueOne.value is greater than valueTwo.value
+        // valueTwo shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
         playerOneDeck.push(valueOne, valueTwo)
+        // playerOneDeck.push takes the cards associated with valueOne & valueTwo and adds them to playerOneDeck
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 1 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
           })
     } else if (valueOne.value < valueTwo.value) {
+        // valueOne shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+        // Then it checks if valueOne.value is less than than valueTwo.value
+        // valueTwo shifts the first element out of the array and returns that element then
+        //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
         playerTwoDeck.push(valueOne, valueTwo)
+        // playerTwoDeck.push takes the cards associated with valueOne & valueTwo and adds them to playerTwoDeck
         gameActions.innerHTML = `<div style="display:none" id="gameText">Player 2 takes card</div>`
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
           })
     } else { 
+        valueWarOne = playerOneDeck.slice(0, 5); // Grabs the first 3 arrays in the object of arrays
+        valueWarTwo = playerTwoDeck.slice(0, 5); // Grabs the first 3 arrays in the object of arrays
+
         playerOneDeck.push(valueOne)
+        // playerOneDeck.push takes the cards associated with valueOne and adds them to playerOneDeck
         playerTwoDeck.push(valueTwo)
+        // playerTwoDeck.push takes the cards associated with valueTwo and adds them to playerTwoDeck
         gameActions.innerHTML = `<div style="display:none" id="gameText">War!</div>`
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
+<<<<<<< HEAD
           })
+=======
+
+            // Pushes all cards in play into opponents deck
+            if (valueOne.value > valueTwo.value) {
+            // valueOne shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+            // Then it checks if valueOne.value is less than than valueTwo.value
+            // valueTwo shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
+
+                valueWarTwo.forEach(card => {
+                // for each card in the array valueWarTwo
+                    playerOneDeck.push(card)
+                    // adds card element to the end of the array of playerOneDeck
+                })
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+                playerTwoDeck.pop() // removes the last element from the array playerTwoDeck and returns that element
+            } 
+            else if (valueOne.value < valueTwo.value) {
+            // valueOne shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueOne
+            // Then it checks if valueOne.value is less than than valueTwo.value
+            // valueTwo shifts the first element out of the array and returns that element then
+            //      .Value (1,2,3,4,5,6,7,8,9,10,11,12,13) pulls the value associated with the returned element from ValueTwo
+                
+                valueWarOne.forEach(card => {
+                // for each card in the array valueWarTwo
+                    playerTwoDeck.push(card)
+                    // adds card element to the end of the array of playerOneDeck
+                })
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+                playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
+            }
+        })
+>>>>>>> master
     }
     winner(); // Invoke winner funcetion
     render(); // Invoke render funcetion

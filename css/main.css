@@ -19,7 +19,6 @@ main {
   background-color: silver; /* in case image doesn't load color will */
   background-image: url(../imgs/war-unsplash.jpg);
   background-repeat: no-repeat;
-  background-size: contain cover;
   padding: 10em;
   width: 200vh;
   height: 100vw;
