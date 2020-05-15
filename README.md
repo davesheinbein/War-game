@@ -8,7 +8,7 @@
 
 ## Screenshot:
 ### War Game Sceenshot
-![War Game Sceenshot](imgs/gameScreenshot.png)
+![War Game Sceenshot](imgs/gameScreen.png)
 
 ### War Game Wireframe Sceenshot
 ![War Game Sceenshot](Wireframe-Pseduocode/wireframe.png)
