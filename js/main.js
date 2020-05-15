@@ -29,7 +29,7 @@ const playerAudio = new Audio();
 //      listen to, or can be used offscreen to manage and play audio.
 
 
-/*----- app's state (variables) -----*/ 
+/*----- app's state (variables) -----*/  
 
 let valueOne; // Set empty value element 
 let valueTwo; // Set empty value element
@@ -409,3 +409,6 @@ function playGunSound() {
     playerAudio.play();
     // call playerAudio and play attached sound
 }
+
+
+console.log('')
