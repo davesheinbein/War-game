@@ -356,7 +356,3 @@ function playGunSound() {
     playerAudio.play();
     // call playerAudio and play attached sound
 }
-
-
-console.log('')
-console.log('')
