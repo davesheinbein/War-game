@@ -289,9 +289,6 @@ function warGameCheck(){
         gameActions.innerHTML = `<div style="display:none" id="gameText">War!</div>`
         $("#gameText").fadeIn(1000, function() {
             // Animation complete.
-<<<<<<< HEAD
-          })
-=======
 
             // Pushes all cards in play into opponents deck
             if (valueOne.value > valueTwo.value) {
@@ -331,7 +328,6 @@ function warGameCheck(){
                 playerOneDeck.pop() // removes the last element from the array playerOneDeck and returns that element
             }
         })
->>>>>>> master
     }
     winner(); // Invoke winner funcetion
     render(); // Invoke render funcetion
@@ -362,4 +358,5 @@ function playGunSound() {
 }
 
 
+console.log('')
 console.log('')
